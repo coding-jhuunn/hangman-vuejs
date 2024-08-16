@@ -1,10 +1,19 @@
 <template>
-  <div>GuessPanel</div>
+  <div>{{ chooseGuess() }}</div>
 </template>
 
 <script>
 export default {
   name: "GuessPanel",
+  props: {
+    task: Array,
+  },
+  methods: {
+    chooseGuess() {
+      let result = this.task[Math.floor(Math.random() * this.task.length)];
+      return result;
+    },
+  },
 };
 </script>
 <style scoped>

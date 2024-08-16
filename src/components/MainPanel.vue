@@ -1,6 +1,6 @@
 <template>
   <div class="mainPanel">
-    <GuessPanel></GuessPanel>
+    <GuessPanel :task="task"></GuessPanel>
     <LifePanel></LifePanel>
   </div>
 </template>
@@ -9,6 +9,9 @@ import GuessPanel from "./GuessPanel.vue";
 import LifePanel from "./LifePanel.vue";
 export default {
   name: "MainPanel",
+  props: {
+    task: Array,
+  },
   components: {
     GuessPanel,
     LifePanel,
@@ -19,7 +22,7 @@ export default {
 .mainPanel {
   display: flex;
   width: 100%;
-
+  margin-top: 25px;
   background-color: red;
   height: 600px;
   width: 100%;
