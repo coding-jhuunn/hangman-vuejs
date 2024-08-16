@@ -1,0 +1,9 @@
+x check the guess letter from the sentences script
+    x display the sleected sentence as " _ " except its special characters
+    x avoid guess letters to be repeated
+    x capital letter
+    retest
+
+x display random sentence from array in main panel VUE
+
+

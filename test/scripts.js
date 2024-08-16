@@ -1,4 +1,5 @@
-const sentences = "as it moves";
+const sentences =
+  "The three-year-old girl ran down the beach as the kite flew behind her.";
 
 let guess = 3;
 

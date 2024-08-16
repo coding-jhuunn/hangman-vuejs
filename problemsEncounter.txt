@@ -1,7 +1,0 @@
-check the guess letter from the sentences script
-
-
-display random sentence from array in main panel VUE
-
-
-display the sleected sentence as " _ " except its special characters
