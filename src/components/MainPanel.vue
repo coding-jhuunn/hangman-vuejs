@@ -3,10 +3,14 @@
     <GuessPanel :task="task"></GuessPanel>
     <LifePanel></LifePanel>
   </div>
+  <div class="subPanel">
+    <InputPanel></InputPanel>
+  </div>
 </template>
 <script>
 import GuessPanel from "./GuessPanel.vue";
 import LifePanel from "./LifePanel.vue";
+import InputPanel from "./InputPanel.vue";
 export default {
   name: "MainPanel",
   props: {
@@ -15,6 +19,7 @@ export default {
   components: {
     GuessPanel,
     LifePanel,
+    InputPanel,
   },
 };
 </script>
@@ -27,5 +32,12 @@ export default {
   height: 600px;
   width: 100%;
   padding: 25px;
+}
+.subPanel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  background-color: green;
 }
 </style>

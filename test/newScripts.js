@@ -1,11 +1,11 @@
-const sentences = "as it moves";
+const sentences = "as";
 
 let guess = 3;
 
 let star = 0;
 let guessedLetters = [];
 let already = false;
-let result = "";
+let result = [];
 let completed = false;
 const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
 
@@ -72,6 +72,7 @@ function changeLetter(letter) {
   console.log(sentences);
   console.log(result);
   if (sentences === result) {
+    guessedLetters = [];
     console.log("You got it");
     completed = true;
   }
@@ -79,6 +80,5 @@ function changeLetter(letter) {
 
 changeLetter("s");
 changeLetter("a");
-changeLetter("ta");
 
 console.log(guessedLetters);

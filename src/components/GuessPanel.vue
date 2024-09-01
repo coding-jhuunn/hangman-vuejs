@@ -10,8 +10,19 @@ export default {
   },
   methods: {
     chooseGuess() {
+      const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
       let result = this.task[Math.floor(Math.random() * this.task.length)];
-      return result;
+      let guessedResult = "";
+      for (let index = 0; index < result.length; index++) {
+        if (regex.test(result[index])) {
+          guessedResult += result[index];
+        } else if (result[index] === " ") {
+          guessedResult += " ";
+        } else {
+          guessedResult += "_";
+        }
+      }
+      return guessedResult;
     },
   },
 };
