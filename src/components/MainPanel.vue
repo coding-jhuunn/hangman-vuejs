@@ -28,7 +28,7 @@ export default {
   display: flex;
   width: 100%;
   margin-top: 25px;
-  background-color: red;
+
   height: 600px;
   width: 100%;
   padding: 25px;

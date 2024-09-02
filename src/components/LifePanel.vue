@@ -1,19 +1,45 @@
 <template>
-  <div>LifePanel</div>
+  <div class="mainLifePanel">
+    <div class="healthBarPanel">
+      <div v-for="bar in this.HealthBar" :key="bar">
+        <box-icon name="heart"></box-icon>
+      </div>
+    </div>
+
+    <div class="resultPanel">Result</div>
+  </div>
 </template>
 
 <script>
 export default {
   name: "LifePanel",
+  created() {
+    this.HealthBar = 3;
+  },
 };
 </script>
 <style scoped>
-div {
-  background-color: pink;
+.mainLifePanel {
   width: 30%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+.healthBarPanel {
+  height: 50%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.resultPanel {
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
 }
 </style>
