@@ -29,11 +29,13 @@ export default {
 </script>
 <style scoped>
 div {
-  background-color: burlywood;
   width: 70%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 32px;
+  padding: 0 25px 0 25px;
+  letter-spacing: 5px;
 }
 </style>
