@@ -13,13 +13,24 @@ import LifePanel from "./LifePanel.vue";
 import InputPanel from "./InputPanel.vue";
 export default {
   name: "MainPanel",
-  props: {
-    task: Array,
-  },
   components: {
     GuessPanel,
     LifePanel,
     InputPanel,
+  },
+  data() {
+    return {
+      task: [],
+    };
+  },
+  created() {
+    this.task = [
+      "The glacier came alive as the climbers hiked closer.",
+      "The three-year-old girl ran down the beach as the kite flew behind her.",
+      "She found it strange that people use their cellphones to actually talk to one another.",
+      "Last Friday I saw a spotted striped blue worm shake hands with a legless lizard.",
+      "The best part of marriage is animal crackers with peanut butter.",
+    ];
   },
 };
 </script>
