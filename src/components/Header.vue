@@ -14,7 +14,6 @@ export default {
 .header {
   display: flex;
   justify-content: space-around;
-
   height: 75px;
 }
 

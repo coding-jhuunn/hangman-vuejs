@@ -37,7 +37,7 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 60px;
-  background-color: green;
+  align-items: center;
+  height: 100%;
 }
 </style>
