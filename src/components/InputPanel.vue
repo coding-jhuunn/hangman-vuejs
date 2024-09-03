@@ -1,34 +1,47 @@
 <template>
   <div class="inputPanel">
     <div class="inputDiv">
-      <input type="text" placeholder="Enter your letter" v-model="inputValue" />
+      <input
+        type="text"
+        name="guessLetter"
+        v-model="guessLetter"
+        placeholder="Enter your letter"
+      />
     </div>
     <div class="btnDiv">
-      <button @click="guessBtn()">Guess</button>
+      <button @click="guessBtn">Guess</button>
     </div>
   </div>
 </template>
 <script>
 export default {
   name: "InputValue",
+  props: {
+    inputValue: String,
+  },
   data() {
     return {
-      inputValue: "",
-      submittedValue: "",
+      guessLetter: "",
     };
   },
   methods: {
-    guessBtn() {
-      if (this.inputValue.length >= 2 || this.inputValue.length === 0) {
-        console.log("only single character");
-        this.inputValue = "";
-      } else {
-        if (this.inputValue) console.log(this.inputValue);
-        this.submittedValue = this.inputValue;
-        this.inputValue = "";
-      }
+    guessBtn(guessLetter) {
+      this.$emit("guessBtn", this.guessLetter);
+      this.guessLetter = "";
     },
   },
+  // methods: {
+  //   guessBtn() {
+  //     if (this.inputValue.length >= 2 || this.inputValue.length === 0) {
+  //       console.log("only single character");
+  //       this.inputValue = "";
+  //     } else {
+  //       if (this.inputValue) console.log(this.inputValue);
+  //       this.submittedValue = this.inputValue;
+  //       this.inputValue = "";
+  //     }
+  //   },
+  // },
 };
 </script>
 <style scoped>

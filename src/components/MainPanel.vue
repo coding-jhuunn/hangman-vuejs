@@ -4,7 +4,8 @@
     <LifePanel :healthBar="healthBar"></LifePanel>
   </div>
   <div class="subPanel">
-    <InputPanel></InputPanel>
+    <InputPanel @guessBtn="guessBtn" v-model="inputValue"></InputPanel>
+    {{ inputValue }}
   </div>
 </template>
 <script>
@@ -22,6 +23,7 @@ export default {
     return {
       task: [],
       healthBar: 3,
+      inputValue: "",
     };
   },
   created() {
@@ -32,6 +34,11 @@ export default {
       "Last4 Friday I saw a spotted striped blue worm shake hands with a legless lizard.",
       "The5 best part of marriage is animal crackers with peanut butter.",
     ];
+  },
+  methods: {
+    guessBtn(value) {
+      console.log(value);
+    },
   },
 };
 </script>
