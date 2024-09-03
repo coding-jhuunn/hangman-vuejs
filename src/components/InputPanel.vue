@@ -1,16 +1,34 @@
 <template>
   <div class="inputPanel">
     <div class="inputDiv">
-      <input type="text" placeholder="Enter your letter" />
+      <input type="text" placeholder="Enter your letter" v-model="inputValue" />
     </div>
     <div class="btnDiv">
-      <button>Guess</button>
+      <button @click="guessBtn()">Guess</button>
     </div>
   </div>
 </template>
 <script>
 export default {
   name: "InputValue",
+  data() {
+    return {
+      inputValue: "",
+      submittedValue: "",
+    };
+  },
+  methods: {
+    guessBtn() {
+      if (this.inputValue.length >= 2 || this.inputValue.length === 0) {
+        console.log("only single character");
+        this.inputValue = "";
+      } else {
+        if (this.inputValue) console.log(this.inputValue);
+        this.submittedValue = this.inputValue;
+        this.inputValue = "";
+      }
+    },
+  },
 };
 </script>
 <style scoped>
