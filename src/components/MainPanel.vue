@@ -37,7 +37,12 @@ export default {
   },
   methods: {
     guessBtn(value) {
-      console.log(value);
+      if (value.length >= 2 || value.length === 0) {
+        console.log("only signle character");
+      } else {
+        console.log("accepted");
+        console.log(value);
+      }
     },
   },
 };
