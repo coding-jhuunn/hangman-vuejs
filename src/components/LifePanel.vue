@@ -1,7 +1,7 @@
 <template>
   <div class="mainLifePanel">
     <div class="healthBarPanel">
-      <div v-for="bar in this.HealthBar" :key="bar">
+      <div v-for="bar in healthBar" :key="bar">
         <box-icon name="heart"></box-icon>
       </div>
     </div>
@@ -13,8 +13,8 @@
 <script>
 export default {
   name: "LifePanel",
-  created() {
-    this.HealthBar = 3;
+  props: {
+    healthBar: Number,
   },
 };
 </script>

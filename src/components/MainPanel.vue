@@ -1,7 +1,7 @@
 <template>
   <div class="mainPanel">
     <GuessPanel :task="task"></GuessPanel>
-    <LifePanel></LifePanel>
+    <LifePanel :healthBar="healthBar"></LifePanel>
   </div>
   <div class="subPanel">
     <InputPanel></InputPanel>
@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       task: [],
+      healthBar: 3,
     };
   },
   created() {
