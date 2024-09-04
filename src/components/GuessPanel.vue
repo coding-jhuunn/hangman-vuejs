@@ -1,29 +1,12 @@
 <template>
-  <div>{{ chooseGuess() }}</div>
+  <div>{{ guessedResult }}</div>
 </template>
 
 <script>
 export default {
   name: "GuessPanel",
   props: {
-    task: Array,
-  },
-  methods: {
-    chooseGuess() {
-      const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
-      let result = this.task[Math.floor(Math.random() * this.task.length)];
-      let guessedResult = "";
-      for (let index = 0; index < result.length; index++) {
-        if (regex.test(result[index])) {
-          guessedResult += result[index];
-        } else if (result[index] === " ") {
-          guessedResult += " ";
-        } else {
-          guessedResult += "_";
-        }
-      }
-      return guessedResult;
-    },
+    guessedResult: String,
   },
 };
 </script>

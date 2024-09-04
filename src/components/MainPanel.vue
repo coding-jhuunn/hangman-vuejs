@@ -1,6 +1,6 @@
 <template>
   <div class="mainPanel">
-    <GuessPanel :task="task"></GuessPanel>
+    <GuessPanel :task="task" :guessedResult="guessedResult"></GuessPanel>
     <LifePanel :healthBar="healthBar"></LifePanel>
   </div>
   <div class="subPanel">
@@ -12,6 +12,7 @@
 import GuessPanel from "./GuessPanel.vue";
 import LifePanel from "./LifePanel.vue";
 import InputPanel from "./InputPanel.vue";
+
 export default {
   name: "MainPanel",
   components: {
@@ -21,9 +22,10 @@ export default {
   },
   data() {
     return {
-      task: [],
       healthBar: 3,
       inputValue: "",
+      guessedResult: "asd",
+      result: "",
     };
   },
   created() {
@@ -34,6 +36,7 @@ export default {
       "Last4 Friday I saw a spotted striped blue worm shake hands with a legless lizard.",
       "The5 best part of marriage is animal crackers with peanut butter.",
     ];
+    this.guessedResult = this.chooseGuess();
   },
   methods: {
     guessBtn(value) {
@@ -43,6 +46,23 @@ export default {
         console.log("accepted");
         console.log(value);
       }
+    },
+    chooseGuess() {
+      const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
+      // this.result = this.task[Math.floor(Math.random() * this.task.length)];
+      let guessedResult = "";
+      this.result = this.task[0];
+      for (let index = 0; index < this.result.length; index++) {
+        if (regex.test(this.result[index])) {
+          guessedResult += this.result[index];
+        } else if (this.result[index] === " ") {
+          guessedResult += " ";
+        } else {
+          guessedResult += "_";
+        }
+      }
+      console.log(this.result);
+      return guessedResult;
     },
   },
 };
