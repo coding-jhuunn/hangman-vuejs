@@ -24,8 +24,11 @@ export default {
     return {
       healthBar: 3,
       inputValue: "",
-      guessedResult: "asd",
-      result: "",
+      guessedResult: "",
+      chosenSentence: "",
+      completed: false,
+      alreadyInput: false,
+      inputLetter: [],
     };
   },
   created() {
@@ -40,29 +43,90 @@ export default {
   },
   methods: {
     guessBtn(value) {
-      if (value.length >= 2 || value.length === 0) {
-        console.log("only signle character");
-      } else {
-        console.log("accepted");
-        console.log(value);
-      }
+      this.changeLetter(value, this.chosenSentence, this.guessedResult);
     },
+
     chooseGuess() {
       const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
       // this.result = this.task[Math.floor(Math.random() * this.task.length)];
-      let guessedResult = "";
-      this.result = this.task[0];
-      for (let index = 0; index < this.result.length; index++) {
-        if (regex.test(this.result[index])) {
-          guessedResult += this.result[index];
-        } else if (this.result[index] === " ") {
-          guessedResult += " ";
+      this.guessedResult = "";
+      this.chosenSentence = this.task[0];
+      for (let index = 0; index < this.chosenSentence.length; index++) {
+        if (regex.test(this.chosenSentence[index])) {
+          this.guessedResult += this.chosenSentence[index];
+        } else if (this.chosenSentence[index] === " ") {
+          this.guessedResult += " ";
         } else {
-          guessedResult += "_";
+          this.guessedResult += "_";
         }
       }
-      console.log(this.result);
-      return guessedResult;
+      console.log(this.chosenSentence);
+      console.log(this.guessedResult);
+      return this.guessedResult;
+    },
+    changeLetter(letter, chosenSent, sentToComplete) {
+      this.alreadyInput = false;
+      if (letter.length > 1) {
+        return console.log("Only one letter is accepted");
+      }
+      if (this.completed) {
+        return console.log("You already got it");
+      }
+      if (this.healthBar === 0) {
+        console.log("you can't play the game anymore");
+        return;
+      } else {
+        for (let i = 0; i < this.inputLetter.length; i++) {
+          if (letter === this.inputLetter[i]) {
+            console.log("You already input this letter");
+            this.alreadyInput = true;
+          }
+        }
+      }
+      if (this.alreadyInput) {
+        return console.log("already guess");
+      }
+      console.log("-------");
+      console.log(`you guess letters is: ${letter}`);
+      this.inputLetter.push(letter);
+      console.log(this.inputLetter);
+
+      let isFlag = true;
+
+      if (this.healthBar > 0) {
+        for (let index = 0; index < chosenSent.length; index++) {
+          if (chosenSent[index] == letter.toUpperCase()) {
+            sentToComplete = sentToComplete.split("");
+            sentToComplete.splice(index, 1, letter.toUpperCase());
+            sentToComplete = sentToComplete.join("");
+            this.guessedResult = sentToComplete;
+            isFlag = false;
+          } else if (chosenSent[index] === letter) {
+            sentToComplete = sentToComplete.split("");
+            sentToComplete.splice(index, 1, letter);
+            sentToComplete = sentToComplete.join("");
+            this.guessedResult = sentToComplete;
+
+            isFlag = false;
+          }
+        }
+        if (isFlag) {
+          this.healthBar--;
+          console.log("does not match anything");
+        }
+      } else {
+        console.log("you don't have any life");
+      }
+      console.log(`Guess left:${this.healthBar}`);
+
+      console.log(chosenSent);
+      console.log(sentToComplete);
+
+      if (chosenSent === sentToComplete) {
+        this.inputLetter = [];
+        console.log("you got it");
+        this.completed = true;
+      }
     },
   },
 };
