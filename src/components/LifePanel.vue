@@ -6,7 +6,10 @@
       </div>
     </div>
 
-    <div class="resultPanel">Result</div>
+    <div class="resultPanel">
+      <div>result</div>
+      <div>{{ resultString }}</div>
+    </div>
   </div>
 </template>
 
@@ -15,6 +18,7 @@ export default {
   name: "LifePanel",
   props: {
     healthBar: Number,
+    resultString: String,
   },
 };
 </script>

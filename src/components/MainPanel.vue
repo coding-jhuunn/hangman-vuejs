@@ -1,7 +1,7 @@
 <template>
   <div class="mainPanel">
     <GuessPanel :task="task" :guessedResult="guessedResult"></GuessPanel>
-    <LifePanel :healthBar="healthBar"></LifePanel>
+    <LifePanel :healthBar="healthBar" :resultString="resultString"></LifePanel>
   </div>
   <div class="subPanel">
     <InputPanel @guessBtn="guessBtn" v-model="inputValue"></InputPanel>
@@ -29,6 +29,7 @@ export default {
       completed: false,
       alreadyInput: false,
       inputLetter: [],
+      resultString: "",
     };
   },
   created() {
@@ -67,13 +68,17 @@ export default {
     changeLetter(letter, chosenSent, sentToComplete) {
       this.alreadyInput = false;
       if (letter.length > 1) {
+        this.resultString = "Only one letter is accepted";
         return console.log("Only one letter is accepted");
       }
       if (this.completed) {
+        this.resultString = "You already got it. Contratulations!!";
+
         return console.log("You already got it");
       }
       if (this.healthBar === 0) {
-        console.log("you can't play the game anymore");
+        this.resultString = "You don't have life anymore";
+
         return;
       } else {
         for (let i = 0; i < this.inputLetter.length; i++) {
@@ -84,10 +89,13 @@ export default {
         }
       }
       if (this.alreadyInput) {
+        this.resultString = `The letter " ${letter} " is already inputted`;
+
         return console.log("already guess");
       }
-      console.log("-------");
-      console.log(`you guess letters is: ${letter}`);
+
+      this.resultString = `You input : ${letter}`;
+
       this.inputLetter.push(letter);
       console.log(this.inputLetter);
 
@@ -112,19 +120,22 @@ export default {
         }
         if (isFlag) {
           this.healthBar--;
+          this.resultString = `The letter you input does't not match anything`;
+
           console.log("does not match anything");
         }
       } else {
+        this.resultString = "You don't have life anymore";
+
         console.log("you don't have any life");
       }
-      console.log(`Guess left:${this.healthBar}`);
 
       console.log(chosenSent);
       console.log(sentToComplete);
 
       if (chosenSent === sentToComplete) {
         this.inputLetter = [];
-        console.log("you got it");
+        this.resultString = "You already got it. Contratulations!!";
         this.completed = true;
       }
     },
