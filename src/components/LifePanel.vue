@@ -7,7 +7,7 @@
     </div>
 
     <div class="resultPanel">
-      <div>result</div>
+      <div>Result</div>
       <div>{{ resultString }}</div>
     </div>
   </div>
@@ -42,8 +42,8 @@ export default {
 .resultPanel {
   height: 50%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
 }
 </style>
