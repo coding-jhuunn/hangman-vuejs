@@ -4,7 +4,11 @@
     <LifePanel :healthBar="healthBar" :resultString="resultString"></LifePanel>
   </div>
   <div class="subPanel">
-    <InputPanel @guessBtn="guessBtn" v-model="inputValue"></InputPanel>
+    <InputPanel
+      @guessBtn="guessBtn"
+      v-model="inputValue"
+      :hideGuessBtn="hideGuessBtn"
+    ></InputPanel>
     {{ inputValue }}
   </div>
 </template>
@@ -30,6 +34,7 @@ export default {
       alreadyInput: false,
       inputLetter: [],
       resultString: "",
+      hideGuessBtn: false,
     };
   },
   created() {
@@ -77,6 +82,7 @@ export default {
         return console.log("You already got it");
       }
       if (this.healthBar === 0) {
+        this.hideGuessBtn = true;
         this.resultString = "You don't have life anymore";
 
         return;
@@ -120,6 +126,9 @@ export default {
         }
         if (isFlag) {
           this.healthBar--;
+          if (this.healthBar === 0) {
+            this.hideGuessBtn = true;
+          }
           this.resultString = `The letter you input does't not match anything`;
 
           console.log("does not match anything");

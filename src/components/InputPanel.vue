@@ -9,7 +9,7 @@
       />
     </div>
     <div class="btnDiv">
-      <button @click="guessBtn">Guess</button>
+      <button @click="guessBtn" :disabled="hideGuessBtn">Guess</button>
     </div>
   </div>
 </template>
@@ -18,6 +18,7 @@ export default {
   name: "InputValue",
   props: {
     inputValue: String,
+    hideGuessBtn: Boolean,
   },
   data() {
     return {
@@ -79,5 +80,9 @@ button:hover {
   border: 1px solid black;
   cursor: -webkit-grab;
   cursor: grab;
+}
+
+.guessButton:hover {
+  cursor: not-allowed;
 }
 </style>
