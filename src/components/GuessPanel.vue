@@ -13,6 +13,7 @@ export default {
 <style scoped>
 div {
   width: 70%;
+  max-width: 450px;
   height: 100%;
   display: flex;
   justify-content: center;

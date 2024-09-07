@@ -55,7 +55,7 @@ export default {
     chooseGuess() {
       const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
       // this.result = this.task[Math.floor(Math.random() * this.task.length)];
-      this.guessedResult = "";
+
       this.chosenSentence = this.task[0];
       for (let index = 0; index < this.chosenSentence.length; index++) {
         if (regex.test(this.chosenSentence[index])) {
@@ -66,20 +66,23 @@ export default {
           this.guessedResult += "_";
         }
       }
-      console.log(this.chosenSentence);
-      console.log(this.guessedResult);
+
       return this.guessedResult;
     },
     changeLetter(letter, chosenSent, sentToComplete) {
       this.alreadyInput = false;
+      if (letter.length === 0) {
+        this.resultString = "You didn't enter anything";
+        return;
+      }
       if (letter.length > 1) {
         this.resultString = "Only one letter is accepted";
-        return console.log("Only one letter is accepted");
+        return;
       }
       if (this.completed) {
         this.resultString = "You already got it. Contratulations!!";
 
-        return console.log("You already got it");
+        return;
       }
       if (this.healthBar === 0) {
         this.hideGuessBtn = true;
@@ -97,7 +100,7 @@ export default {
       if (this.alreadyInput) {
         this.resultString = `The letter " ${letter} " is already inputted`;
 
-        return console.log("already guess");
+        return;
       }
 
       this.resultString = `You input : ${letter}`;
@@ -142,6 +145,9 @@ export default {
       console.log(chosenSent);
       console.log(sentToComplete);
 
+      if (this.healthBar === 0) {
+        this.resultString = "You don't have life anymore";
+      }
       if (chosenSent === sentToComplete) {
         this.inputLetter = [];
         this.resultString = "You already got it. Contratulations!!";
@@ -156,7 +162,8 @@ export default {
   display: flex;
   width: 100%;
   margin-top: 25px;
-
+  justify-content: center;
+  align-items: center;
   height: 600px;
   width: 100%;
   padding: 25px;
