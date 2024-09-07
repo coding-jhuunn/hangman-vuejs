@@ -8,7 +8,7 @@
 
     <div class="resultPanel">
       <div>Result</div>
-      <div>{{ resultString }}</div>
+      <div class="resultString">{{ resultString }}</div>
     </div>
   </div>
 </template>
@@ -24,26 +24,37 @@ export default {
 </script>
 <style scoped>
 .mainLifePanel {
-  width: 30%;
-  height: 100%;
+  width: 40%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 25px;
 }
 .healthBarPanel {
   height: 50%;
-
+  width: 100%;
+  font-size: 64px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  background-color: green;
+  padding: 25px;
 }
 .resultPanel {
   height: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: center;
+  background-color: yellow;
+  padding: 25px;
+}
+
+.resultString {
+  font-size: 14px;
 }
 </style>
