@@ -12,4 +12,13 @@ export default defineConfig({
       },
     }),
   ],
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://zenquotes.io/api/quotes",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });

@@ -1,6 +1,6 @@
 <template>
   <div class="mainPanel">
-    <GuessPanel :task="task" :guessedResult="guessedResult"></GuessPanel>
+    <GuessPanel :guessedResult="guessedResult"></GuessPanel>
     <LifePanel :healthBar="healthBar" :resultString="resultString"></LifePanel>
   </div>
   <div class="subPanel">
@@ -35,17 +35,8 @@ export default {
       inputLetter: [],
       resultString: "",
       hideGuessBtn: false,
+      api_url: "https://quotes-api-self.vercel.app/quote",
     };
-  },
-  created() {
-    this.task = [
-      "The1 glacier came alive as the climbers hiked closer.",
-      "The2 three-year-old girl ran down the beach as the kite flew behind her.",
-      "She3 found it strange that people use their cellphones to actually talk to one another.",
-      "Last4 Friday I saw a spotted striped blue worm shake hands with a legless lizard.",
-      "The5 best part of marriage is animal crackers with peanut butter.",
-    ];
-    this.guessedResult = this.chooseGuess();
   },
   methods: {
     guessBtn(value) {
@@ -154,6 +145,29 @@ export default {
         this.completed = true;
       }
     },
+
+    async fetchQuotes() {
+      try {
+        const res = await fetch(this.api_url);
+        const data = res.json();
+        console.log("complete");
+        console.log(data);
+        console.log(data.quote);
+      } catch (err) {
+        console.log("faild to catch");
+      }
+    },
+  },
+  async created() {
+    this.task = await this.fetchQuotes();
+    // this.task = [
+    //   "The1 glacier came alive as the climbers hiked closer.",
+    //   "The2 three-year-old girl ran down the beach as the kite flew behind her.",
+    //   "She3 found it strange that people use their cellphones to actually talk to one another.",
+    //   "Last4 Friday I saw a spotted striped blue worm shake hands with a legless lizard.",
+    //   "The5 best part of marriage is animal crackers with peanut butter.",
+    // ];
+    // this.guessedResult = this.chooseGuess();
   },
 };
 </script>
