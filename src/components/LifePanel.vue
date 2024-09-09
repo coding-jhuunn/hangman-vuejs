@@ -24,7 +24,7 @@ export default {
 </script>
 <style scoped>
 .mainLifePanel {
-  width: 40%;
+  width: 20%;
   height: 70%;
   display: flex;
   flex-direction: column;

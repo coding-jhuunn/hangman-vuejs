@@ -144,6 +144,7 @@ export default {
 
       if (this.healthBar === 0) {
         this.resultString = "You don't have life anymore";
+        this.tobeGuessSentence = this.chosenSentence;
       }
       if (chosenSent === sentToComplete) {
         this.inputLetter = [];
@@ -174,6 +175,7 @@ export default {
 .mainPanel {
   display: flex;
   width: 100%;
+  height: 100%;
   margin-top: 25px;
   justify-content: center;
   align-items: center;

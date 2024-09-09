@@ -1,6 +1,8 @@
 <template>
-  <div>{{ tobeGuessSentence }}</div>
-  <div>{{ tobeGuessAuthor }}</div>
+  <div class="main">
+    <div class="top">{{ tobeGuessSentence }}</div>
+    <div class="bot">{{ tobeGuessAuthor }}</div>
+  </div>
 </template>
 
 <script>
@@ -13,15 +15,22 @@ export default {
 };
 </script>
 <style scoped>
-div {
-  width: 70%;
-  max-width: 450px;
+.main {
+  width: 80%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  font-size: 32px;
   padding: 0 25px 0 25px;
-  letter-spacing: 5px;
+}
+.top {
+  font-size: 26px;
+  letter-spacing: 3px;
+  max-width: 75%;
+  padding: 15px;
+}
+.bot {
+  font-size: 18px;
 }
 </style>
