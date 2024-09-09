@@ -1,6 +1,10 @@
 <template>
   <div class="mainPanel">
     <GuessPanel :guessedResult="guessedResult"></GuessPanel>
+    <div v-if="fetchData">
+      <p>{{ fetchData.quote }}</p>
+      <p>{{ fetchData.author }}</p>
+    </div>
     <LifePanel :healthBar="healthBar" :resultString="resultString"></LifePanel>
   </div>
   <div class="subPanel">
@@ -26,6 +30,7 @@ export default {
   },
   data() {
     return {
+      fetchData: null,
       healthBar: 3,
       inputValue: "",
       guessedResult: "",
@@ -149,17 +154,18 @@ export default {
     async fetchQuotes() {
       try {
         const res = await fetch(this.api_url);
-        const data = res.json();
+        const data = await res.json();
         console.log("complete");
         console.log(data);
-        console.log(data.quote);
+        this.fetchData = data;
       } catch (err) {
         console.log("faild to catch");
       }
     },
   },
-  async created() {
-    this.task = await this.fetchQuotes();
+  created() {
+    this.fetchQuotes();
+    // this.task = await this.fetchQuotes();
     // this.task = [
     //   "The1 glacier came alive as the climbers hiked closer.",
     //   "The2 three-year-old girl ran down the beach as the kite flew behind her.",
