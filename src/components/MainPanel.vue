@@ -1,10 +1,10 @@
 <template>
   <div class="mainPanel">
-    <GuessPanel :guessedResult="guessedResult"></GuessPanel>
-    <div v-if="fetchData">
-      <p>{{ fetchData.quote }}</p>
-      <p>{{ fetchData.author }}</p>
-    </div>
+    <GuessPanel
+      :tobeGuessSentence="tobeGuessSentence"
+      :tobeGuessAuthor="tobeGuessAuthor"
+    ></GuessPanel>
+
     <LifePanel :healthBar="healthBar" :resultString="resultString"></LifePanel>
   </div>
   <div class="subPanel">
@@ -33,7 +33,8 @@ export default {
       fetchData: null,
       healthBar: 3,
       inputValue: "",
-      guessedResult: "",
+      tobeGuessSentence: "",
+      tobeGuessAuthor: "",
       chosenSentence: "",
       completed: false,
       alreadyInput: false,
@@ -45,25 +46,25 @@ export default {
   },
   methods: {
     guessBtn(value) {
-      this.changeLetter(value, this.chosenSentence, this.guessedResult);
+      this.changeLetter(value, this.chosenSentence, this.tobeGuessSentence);
     },
 
     chooseGuess(sentence) {
       const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
-      // this.result = this.task[Math.floor(Math.random() * this.task.length)];
 
       this.chosenSentence = sentence.quote;
+      this.tobeGuessAuthor = sentence.author;
       for (let index = 0; index < this.chosenSentence.length; index++) {
         if (regex.test(this.chosenSentence[index])) {
-          this.guessedResult += this.chosenSentence[index];
+          this.tobeGuessSentence += this.chosenSentence[index];
         } else if (this.chosenSentence[index] === " ") {
-          this.guessedResult += " ";
+          this.tobeGuessSentence += " ";
         } else {
-          this.guessedResult += "_";
+          this.tobeGuessSentence += "_";
         }
       }
 
-      return this.guessedResult;
+      return this.tobeGuessSentence;
     },
     changeLetter(letter, chosenSent, sentToComplete) {
       this.alreadyInput = false;
@@ -112,13 +113,13 @@ export default {
             sentToComplete = sentToComplete.split("");
             sentToComplete.splice(index, 1, letter.toUpperCase());
             sentToComplete = sentToComplete.join("");
-            this.guessedResult = sentToComplete;
+            this.tobeGuessSentence = sentToComplete;
             isFlag = false;
           } else if (chosenSent[index] === letter) {
             sentToComplete = sentToComplete.split("");
             sentToComplete.splice(index, 1, letter);
             sentToComplete = sentToComplete.join("");
-            this.guessedResult = sentToComplete;
+            this.tobeGuessSentence = sentToComplete;
 
             isFlag = false;
           }

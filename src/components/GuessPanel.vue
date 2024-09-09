@@ -1,12 +1,14 @@
 <template>
-  <div>{{ guessedResult }}</div>
+  <div>{{ tobeGuessSentence }}</div>
+  <div>{{ tobeGuessAuthor }}</div>
 </template>
 
 <script>
 export default {
   name: "GuessPanel",
   props: {
-    guessedResult: String,
+    tobeGuessSentence: String,
+    tobeGuessAuthor: String,
   },
 };
 </script>
