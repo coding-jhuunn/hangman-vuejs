@@ -48,11 +48,11 @@ export default {
       this.changeLetter(value, this.chosenSentence, this.guessedResult);
     },
 
-    chooseGuess() {
+    chooseGuess(sentence) {
       const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
       // this.result = this.task[Math.floor(Math.random() * this.task.length)];
 
-      this.chosenSentence = this.task[0];
+      this.chosenSentence = sentence.quote;
       for (let index = 0; index < this.chosenSentence.length; index++) {
         if (regex.test(this.chosenSentence[index])) {
           this.guessedResult += this.chosenSentence[index];
@@ -156,8 +156,9 @@ export default {
         const res = await fetch(this.api_url);
         const data = await res.json();
         console.log("complete");
-        console.log(data);
+
         this.fetchData = data;
+        this.chooseGuess(this.fetchData);
       } catch (err) {
         console.log("faild to catch");
       }
@@ -165,15 +166,6 @@ export default {
   },
   created() {
     this.fetchQuotes();
-    // this.task = await this.fetchQuotes();
-    // this.task = [
-    //   "The1 glacier came alive as the climbers hiked closer.",
-    //   "The2 three-year-old girl ran down the beach as the kite flew behind her.",
-    //   "She3 found it strange that people use their cellphones to actually talk to one another.",
-    //   "Last4 Friday I saw a spotted striped blue worm shake hands with a legless lizard.",
-    //   "The5 best part of marriage is animal crackers with peanut butter.",
-    // ];
-    // this.guessedResult = this.chooseGuess();
   },
 };
 </script>
