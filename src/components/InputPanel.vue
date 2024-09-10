@@ -10,6 +10,7 @@
     </div>
     <div class="btnDiv">
       <button @click="guessBtn" :disabled="hideGuessBtn">Guess</button>
+      <button @click="resetBtn">Reset</button>
     </div>
   </div>
 </template>
@@ -29,6 +30,9 @@ export default {
     guessBtn(guessLetter) {
       this.$emit("guessBtn", this.guessLetter);
       this.guessLetter = "";
+    },
+    resetBtn() {
+      this.$emit("resetBtn");
     },
   },
   // methods: {

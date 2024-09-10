@@ -10,6 +10,7 @@
   <div class="subPanel">
     <InputPanel
       @guessBtn="guessBtn"
+      @resetBtn="resetBtn"
       v-model="inputValue"
       :hideGuessBtn="hideGuessBtn"
     ></InputPanel>
@@ -164,6 +165,11 @@ export default {
       } catch (err) {
         console.log("faild to catch");
       }
+    },
+    resetBtn() {
+      console.log("reset");
+      // this.healthBar = 3;
+      // this.resultString = 0;
     },
   },
   created() {
