@@ -155,6 +155,8 @@ export default {
     },
 
     async fetchQuotes() {
+      this.tobeGuessSentence = "";
+      this.tobeGuessAuthor = "";
       try {
         const res = await fetch(this.api_url);
         const data = await res.json();
@@ -167,9 +169,10 @@ export default {
       }
     },
     resetBtn() {
-      console.log("reset");
-      // this.healthBar = 3;
-      // this.resultString = 0;
+      // console.log("reset");
+      this.healthBar = 3;
+      this.resultString = "";
+      this.fetchQuotes();
     },
   },
   created() {
