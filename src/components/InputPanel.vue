@@ -35,18 +35,6 @@ export default {
       this.$emit("resetBtn");
     },
   },
-  // methods: {
-  //   guessBtn() {
-  //     if (this.inputValue.length >= 2 || this.inputValue.length === 0) {
-  //       console.log("only single character");
-  //       this.inputValue = "";
-  //     } else {
-  //       if (this.inputValue) console.log(this.inputValue);
-  //       this.submittedValue = this.inputValue;
-  //       this.inputValue = "";
-  //     }
-  //   },
-  // },
 };
 </script>
 <style scoped>
@@ -66,7 +54,9 @@ input {
 input:focus {
   outline: none;
 }
-
+.btnDiv {
+  display: flex;
+}
 button {
   background-color: black;
   color: #e7e7e7;

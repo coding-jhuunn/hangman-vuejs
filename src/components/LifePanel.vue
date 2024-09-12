@@ -39,8 +39,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  background-color: green;
+
   padding: 25px;
 }
 .resultPanel {
@@ -50,7 +49,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: yellow;
+
   padding: 25px;
 }
 
