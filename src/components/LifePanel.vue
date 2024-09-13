@@ -2,7 +2,7 @@
   <div class="mainLifePanel">
     <div class="healthBarPanel">
       <div v-for="bar in healthBar" :key="bar">
-        <box-icon name="heart"></box-icon>
+        <box-icon name="heart" class="heart"></box-icon>
       </div>
     </div>
 
@@ -24,8 +24,7 @@ export default {
 </script>
 <style scoped>
 .mainLifePanel {
-  background-color: skyblue;
-
+  /* background-color: skyblue; */
   width: 20%;
   height: 70%;
   display: flex;
@@ -35,26 +34,26 @@ export default {
   padding: 25px;
 }
 .healthBarPanel {
-  background-color: burlywood;
-
+  /* background-color: burlywood; */
   height: 50%;
   width: 100%;
   font-size: 64px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-
   padding: 25px;
 }
+.heart {
+  width: 48px;
+  height: 48px;
+}
 .resultPanel {
-  background-color: red;
+  /* background-color: red; */
   height: 50%;
   width: 100%;
   display: flex;
   flex-direction: column;
-
   align-items: center;
-
   padding: 25px;
 }
 .resultTitle {
@@ -62,9 +61,8 @@ export default {
 }
 .resultString {
   height: 70%;
-
   font-size: 14px;
-  background-color: green;
+  /* background-color: green; */
   word-wrap: break-word;
 }
 </style>
