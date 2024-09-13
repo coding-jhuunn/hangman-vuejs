@@ -12,7 +12,8 @@
       @guessBtn="guessBtn"
       @resetBtn="resetBtn"
       v-model="inputValue"
-      :hideGuessBtn="hideGuessBtn"
+      :disableGuessBtn="disableGuessBtn"
+      :disableResetBtn="disableResetBtn"
     ></InputPanel>
     {{ inputValue }}
   </div>
@@ -41,7 +42,8 @@ export default {
       alreadyInput: false,
       inputLetter: [],
       resultString: "",
-      hideGuessBtn: false,
+      disableGuessBtn: false,
+      disableResetBtn: true,
       api_url: "https://quotes-api-self.vercel.app/quote",
     };
   },
@@ -79,11 +81,14 @@ export default {
       }
       if (this.completed) {
         this.resultString = "You already got it. Contratulations!!";
+        this.disableResetBtn = false;
 
         return;
       }
       if (this.healthBar === 0) {
-        this.hideGuessBtn = true;
+        this.disableResetBtn = false;
+
+        this.disableGuessBtn = true;
         this.resultString = "You don't have life anymore";
 
         return;
@@ -128,7 +133,8 @@ export default {
         if (isFlag) {
           this.healthBar--;
           if (this.healthBar === 0) {
-            this.hideGuessBtn = true;
+            this.disableGuessBtn = true;
+            this.disableResetBtn = false;
           }
           this.resultString = `The letter you input does't not match anything`;
 
@@ -144,6 +150,8 @@ export default {
       console.log(sentToComplete);
 
       if (this.healthBar === 0) {
+        this.disableResetBtn = false;
+
         this.resultString = "You don't have life anymore";
         this.tobeGuessSentence = this.chosenSentence;
       }
@@ -173,6 +181,8 @@ export default {
       this.healthBar = 3;
       this.resultString = "";
       this.fetchQuotes();
+      this.disableResetBtn = true;
+      this.disableGuessBtn = false;
     },
   },
   created() {

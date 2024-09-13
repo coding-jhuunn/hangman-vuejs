@@ -9,8 +9,26 @@
       />
     </div>
     <div class="btnDiv">
-      <button @click="guessBtn" :disabled="hideGuessBtn">Guess</button>
-      <button @click="resetBtn">Reset</button>
+      <button
+        :disabled="disableGuessBtn"
+        @click="guessBtn"
+        :class="{
+          'btn-active': !disableGuessBtn,
+          'btn-inactive': disableGuessBtn,
+        }"
+      >
+        Guess
+      </button>
+      <button
+        @click="resetBtn"
+        :class="{
+          'btn-active': !disableResetBtn,
+          'btn-inactive': disableResetBtn,
+        }"
+        :disabled="disableResetBtn"
+      >
+        Reset
+      </button>
     </div>
   </div>
 </template>
@@ -19,7 +37,8 @@ export default {
   name: "InputValue",
   props: {
     inputValue: String,
-    hideGuessBtn: Boolean,
+    disableResetBtn: Boolean,
+    disableGuessBtn: Boolean,
   },
   data() {
     return {
@@ -77,6 +96,21 @@ button:hover {
 }
 
 .guessButton:hover {
+  cursor: not-allowed;
+}
+.btn-active {
+  /* Active background color */
+  color: white;
+}
+
+.btn-inactive {
+  background-color: black; /* Inactive background color */
+  color: gray;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.btn-inactive:hover {
+  pointer-events: none;
   cursor: not-allowed;
 }
 </style>
