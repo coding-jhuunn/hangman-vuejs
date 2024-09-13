@@ -89,7 +89,8 @@ export default {
         this.disableResetBtn = false;
 
         this.disableGuessBtn = true;
-        this.resultString = "You don't have life anymore";
+        this.resultString =
+          "You don't have life anymore. The result was revealed";
 
         return;
       } else {
@@ -141,7 +142,8 @@ export default {
           console.log("does not match anything");
         }
       } else {
-        this.resultString = "You don't have life anymore";
+        this.resultString =
+          "You don't have life anymore. The result was revealed";
 
         console.log("you don't have any life");
       }
@@ -152,7 +154,8 @@ export default {
       if (this.healthBar === 0) {
         this.disableResetBtn = false;
 
-        this.resultString = "You don't have life anymore";
+        this.resultString =
+          "You don't have life anymore. The result was revealed";
         this.tobeGuessSentence = this.chosenSentence;
       }
       if (chosenSent === sentToComplete) {
@@ -178,11 +181,13 @@ export default {
     },
     resetBtn() {
       // console.log("reset");
+      this.inputLetter = [];
       this.healthBar = 3;
       this.resultString = "";
       this.fetchQuotes();
       this.disableResetBtn = true;
       this.disableGuessBtn = false;
+      this.resultString = "";
     },
   },
   created() {
