@@ -7,7 +7,7 @@
     </div>
 
     <div class="resultPanel">
-      <div>Result</div>
+      <div class="resultTitle">Result</div>
       <div class="resultString">{{ resultString }}</div>
     </div>
   </div>
@@ -24,6 +24,8 @@ export default {
 </script>
 <style scoped>
 .mainLifePanel {
+  background-color: skyblue;
+
   width: 20%;
   height: 70%;
   display: flex;
@@ -33,6 +35,8 @@ export default {
   padding: 25px;
 }
 .healthBarPanel {
+  background-color: burlywood;
+
   height: 50%;
   width: 100%;
   font-size: 64px;
@@ -43,17 +47,24 @@ export default {
   padding: 25px;
 }
 .resultPanel {
+  background-color: red;
   height: 50%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   align-items: center;
 
   padding: 25px;
 }
-
+.resultTitle {
+  height: 30%;
+}
 .resultString {
+  height: 70%;
+
   font-size: 14px;
+  background-color: green;
+  word-wrap: break-word;
 }
 </style>

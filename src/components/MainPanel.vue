@@ -72,7 +72,7 @@ export default {
     changeLetter(letter, chosenSent, sentToComplete) {
       this.alreadyInput = false;
       if (letter.length === 0) {
-        this.resultString = "You didn't enter anything";
+        this.resultString = "Please enter a letter";
         return;
       }
       if (letter.length > 1) {
@@ -96,7 +96,6 @@ export default {
       } else {
         for (let i = 0; i < this.inputLetter.length; i++) {
           if (letter === this.inputLetter[i]) {
-            console.log("You already input this letter");
             this.alreadyInput = true;
           }
         }
@@ -110,7 +109,6 @@ export default {
       this.resultString = `You input : ${letter}`;
 
       this.inputLetter.push(letter);
-      console.log(this.inputLetter);
 
       let isFlag = true;
 
@@ -138,8 +136,6 @@ export default {
             this.disableResetBtn = false;
           }
           this.resultString = `The letter you input does't not match anything`;
-
-          console.log("does not match anything");
         }
       } else {
         this.resultString =
@@ -175,9 +171,7 @@ export default {
 
         this.fetchData = data;
         this.chooseGuess(this.fetchData);
-      } catch (err) {
-        console.log("faild to catch");
-      }
+      } catch (err) {}
     },
     resetBtn() {
       // console.log("reset");
