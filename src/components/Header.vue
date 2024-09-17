@@ -1,7 +1,11 @@
 <template>
   <div class="header">
     <div class="left side">Hang Man Game</div>
-    <div class="right side">About</div>
+    <div class="right side">
+      <a href="https://github.com/coding-jhuunn/learn-vue-part2" target="_blank"
+        >About</a
+      >
+    </div>
   </div>
 </template>
 
@@ -27,5 +31,9 @@ export default {
 
 .side:hover {
   border-bottom: 1px solid gainsboro;
+}
+a {
+  text-decoration: none;
+  color: black;
 }
 </style>
