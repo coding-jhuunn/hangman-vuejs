@@ -53,7 +53,7 @@ export default {
     },
 
     chooseGuess(sentence) {
-      const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
+      const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\’”]/;
 
       this.chosenSentence = sentence.quote;
       this.tobeGuessAuthor = sentence.author;
@@ -80,14 +80,14 @@ export default {
         return;
       }
       if (this.completed) {
-        this.resultString = "You already got it. Contratulations!!";
+        this.disableGuessBtn = true;
         this.disableResetBtn = false;
+        this.resultString = "You already got it. Contratulations!!";
 
         return;
       }
       if (this.healthBar === 0) {
         this.disableResetBtn = false;
-
         this.disableGuessBtn = true;
         this.resultString =
           "You don't have life anymore. The result was revealed";
@@ -140,12 +140,7 @@ export default {
       } else {
         this.resultString =
           "You don't have life anymore. The result was revealed";
-
-        console.log("you don't have any life");
       }
-
-      console.log(chosenSent);
-      console.log(sentToComplete);
 
       if (this.healthBar === 0) {
         this.disableResetBtn = false;
@@ -154,10 +149,17 @@ export default {
           "You don't have life anymore. The result was revealed";
         this.tobeGuessSentence = this.chosenSentence;
       }
+      //chosenSent, sentToComplete)
+
+      //this.chosenSentence, this.tobeGuessSentence
       if (chosenSent === sentToComplete) {
         this.inputLetter = [];
-        this.resultString = "You already got it. Contratulations!!";
         this.completed = true;
+        this.disableGuessBtn = true;
+        this.disableResetBtn = false;
+        this.resultString = "You already got it. Contratulations!!";
+        chosenSent = "";
+        sentToComplete = "";
       }
     },
 
@@ -167,7 +169,6 @@ export default {
       try {
         const res = await fetch(this.api_url);
         const data = await res.json();
-        console.log("complete");
 
         this.fetchData = data;
         this.chooseGuess(this.fetchData);
@@ -175,6 +176,8 @@ export default {
     },
     resetBtn() {
       // console.log("reset");
+      this.tobeGuessSentence = "";
+      this.tobeGuessAuthor = "";
       this.inputLetter = [];
       this.healthBar = 3;
       this.resultString = "";
@@ -182,6 +185,7 @@ export default {
       this.disableResetBtn = true;
       this.disableGuessBtn = false;
       this.resultString = "";
+      this.completed = false;
     },
   },
   created() {
