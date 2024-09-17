@@ -24,45 +24,40 @@ export default {
 </script>
 <style scoped>
 .mainLifePanel {
-  /* background-color: skyblue; */
-  width: 20%;
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 25px;
+  height: 75px;
+  width: 100%;
 }
 .healthBarPanel {
-  /* background-color: burlywood; */
-  height: 50%;
-  width: 100%;
-  font-size: 64px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  padding: 25px;
-}
-.heart {
-  width: 48px;
-  height: 48px;
+  align-items: center;
 }
 .resultPanel {
-  /* background-color: red; */
-  height: 50%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 25px;
+  justify-content: center;
 }
-.resultTitle {
-  height: 30%;
-}
-.resultString {
-  height: 70%;
-  font-size: 14px;
-  /* background-color: green; */
-  word-wrap: break-word;
+@media (max-width: 600px) {
+  .mainLifePanel {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .heart {
+    width: 16px;
+    height: 16px;
+  }
+  .healthBarPanel {
+    height: 100%;
+    width: 50%;
+  }
+  .resultPanel {
+    width: 50%;
+    height: 100%;
+  }
 }
 </style>

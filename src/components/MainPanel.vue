@@ -190,22 +190,35 @@ export default {
 };
 </script>
 <style>
-.mainPanel {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  margin-top: 25px;
-  justify-content: center;
-  align-items: center;
-  height: 600px;
-  width: 100%;
-  padding: 25px;
+@media (max-width: 600px) {
+  .mainPanel {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    padding: 0;
+  }
+  .subPanel {
+    margin-top: 25px;
+  }
 }
-.subPanel {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+/* @media (max-width: 768px) {
+  .header {
+    font-size: 16px;
+  }
+} */
+/* @media (min-width: 769px) and (max-width: 1024px) {
+  .header {
+    font-size: 18px;
+  }
 }
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .header {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1201px) {
+  .header {
+    font-size: 22px;
+  }
+} */
 </style>

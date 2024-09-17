@@ -20,6 +20,7 @@ export default {
   display: flex;
   justify-content: space-around;
   height: 75px;
+  margin-bottom: 25px;
 }
 
 .side {

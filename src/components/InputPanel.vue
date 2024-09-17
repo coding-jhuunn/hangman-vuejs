@@ -57,19 +57,6 @@ export default {
 };
 </script>
 <style scoped>
-.inputPanel {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  padding: 10px;
-
-  width: 50%;
-}
-input {
-  font-size: 16px;
-  height: 50px;
-  padding: 15px 30px;
-}
 input:focus {
   outline: none;
 }
@@ -80,7 +67,6 @@ button {
   background-color: black;
   color: #e7e7e7;
   border: none;
-  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -112,5 +98,32 @@ button:hover {
 .btn-inactive:hover {
   pointer-events: none;
   cursor: not-allowed;
+}
+@media (max-width: 600px) {
+  .inputPanel {
+    width: 100%;
+    height: 65px;
+    display: flex;
+  }
+  input {
+    font-size: 14px;
+    height: 25px;
+    padding: 15px 30px;
+    width: 100%;
+    height: 100%;
+  }
+  .inputDiv {
+    width: 50%;
+  }
+  button {
+    height: 25px;
+    padding: 15px 32px;
+    font-size: 14px;
+    height: 100%;
+    width: 50%;
+  }
+  .btnDiv {
+    width: 50%;
+  }
 }
 </style>
