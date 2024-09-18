@@ -56,6 +56,20 @@ export default {
     font-size: 14px;
   }
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main {
+    width: 100%;
+    padding: 0 60px 0 60px;
+  }
+  .top {
+    min-height: 225px;
+    font-size: 18px;
+    padding: 15px;
+  }
+  .bot {
+    font-size: 16px;
+  }
+}
 /*
 @media (min-width: 769px) and (max-width: 1024px) {
   .header {

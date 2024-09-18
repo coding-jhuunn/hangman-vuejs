@@ -220,11 +220,19 @@ export default {
     align-content: center;
   }
 }
-/* @media (min-width: 769px) and (max-width: 1024px) {
-  .header {
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mainPanel {
     font-size: 18px;
+    padding: 30px;
   }
-}/*
+  .subPanel {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+}
+/* 
 @media (min-width: 1025px) and (max-width: 1200px) {
   .header {
     font-size: 20px;

@@ -70,8 +70,30 @@ export default {
     margin-bottom: 25px;
   }
   .heart {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
+  }
+  .healthBarPanel {
+    height: 100%;
+    width: 50%;
+  }
+  .resultPanel {
+    width: 50%;
+    height: 100%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mainLifePanel {
+    height: 125px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .heart {
+    width: 20px;
+    height: 20px;
   }
   .healthBarPanel {
     height: 100%;
