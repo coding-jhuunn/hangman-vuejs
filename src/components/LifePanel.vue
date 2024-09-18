@@ -40,7 +40,29 @@ export default {
 }
 @media (max-width: 600px) {
   .mainLifePanel {
-    height: 200px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .heart {
+    width: 16px;
+    height: 16px;
+  }
+  .healthBarPanel {
+    height: 100%;
+    width: 50%;
+  }
+  .resultPanel {
+    width: 50%;
+    height: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .mainLifePanel {
+    height: 100px;
     display: flex;
     flex-direction: row;
     align-items: center;
