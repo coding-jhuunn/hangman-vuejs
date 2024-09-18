@@ -86,7 +86,7 @@ export default {
   .mainLifePanel {
     height: 125px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 25px;
@@ -101,6 +101,28 @@ export default {
   }
   .resultPanel {
     width: 50%;
+    height: 100%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .mainLifePanel {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .heart {
+    width: 48px;
+    height: 48px;
+  }
+  .healthBarPanel {
+    height: 100%;
+    width: 100%;
+  }
+  .resultPanel {
+    width: 100%;
     height: 100%;
   }
 }

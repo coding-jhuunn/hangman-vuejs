@@ -188,4 +188,33 @@ button:hover {
     width: 50%;
   }
 }
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .inputPanel {
+    width: 450px;
+    height: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  input {
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+  }
+  .inputDiv {
+    width: 50%;
+  }
+  button {
+    padding: 10px;
+    font-size: 16px;
+    height: 100%;
+    width: 50%;
+    margin-left: 24px;
+    border-radius: 5px;
+  }
+  .btnDiv {
+    width: 50%;
+  }
+}
 </style>

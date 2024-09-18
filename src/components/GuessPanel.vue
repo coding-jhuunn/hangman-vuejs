@@ -70,12 +70,21 @@ export default {
     font-size: 16px;
   }
 }
-/*
-@media (min-width: 769px) and (max-width: 1024px) {
-  .header {
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .main {
+    width: 100%;
+    padding: 0 60px 0 60px;
+  }
+  .top {
+    font-size: 22px;
+    padding: 18px;
+  }
+  .bot {
     font-size: 18px;
   }
 }
+/*
+
 @media (min-width: 1025px) and (max-width: 1200px) {
   .header {
     font-size: 20px;

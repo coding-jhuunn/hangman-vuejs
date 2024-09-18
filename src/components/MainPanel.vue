@@ -199,7 +199,7 @@ export default {
     display: flex;
     flex-direction: column;
     font-size: 12px;
-    padding: 0;
+    padding: 25px;
   }
   .subPanel {
     margin-top: 5px;
@@ -210,6 +210,8 @@ export default {
 }
 @media (max-width: 768px) {
   .mainPanel {
+    display: flex;
+    flex-direction: column;
     font-size: 16px;
     padding: 30px;
   }
@@ -222,8 +224,10 @@ export default {
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .mainPanel {
+    display: flex;
+    flex-direction: column;
     font-size: 18px;
-    padding: 30px;
+    padding: 35px;
   }
   .subPanel {
     margin-top: 10px;
@@ -232,13 +236,22 @@ export default {
     align-content: center;
   }
 }
-/* 
+
 @media (min-width: 1025px) and (max-width: 1200px) {
-  .header {
+  .mainPanel {
+    display: flex;
+    flex-direction: row;
     font-size: 20px;
+    padding: 40px;
+  }
+  .subPanel {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
   }
 }
-@media (min-width: 1201px) {
+/* @media (min-width: 1201px) {
   .header {
     font-size: 22px;
   }
