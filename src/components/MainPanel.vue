@@ -202,7 +202,10 @@ export default {
     padding: 0;
   }
   .subPanel {
-    margin-top: 25px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
   }
 }
 /* @media (max-width: 768px) {

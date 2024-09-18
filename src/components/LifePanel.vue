@@ -40,7 +40,7 @@ export default {
 }
 @media (max-width: 600px) {
   .mainLifePanel {
-    height: 100px;
+    height: 200px;
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -57,7 +57,9 @@ export default {
 };
 </script>
 <style scoped>
-input:focus {
+input {
+  border: none;
+  border-bottom: 1px solid black;
   outline: none;
 }
 .btnDiv {
@@ -101,14 +103,15 @@ button:hover {
 }
 @media (max-width: 600px) {
   .inputPanel {
-    width: 100%;
-    height: 65px;
+    width: 250px;
+    height: 60px;
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
   input {
-    font-size: 14px;
-    height: 25px;
-    padding: 15px 30px;
+    font-size: 12px;
+    padding: 10px;
     width: 100%;
     height: 100%;
   }
@@ -116,11 +119,12 @@ button:hover {
     width: 50%;
   }
   button {
-    height: 25px;
-    padding: 15px 32px;
-    font-size: 14px;
+    padding: 10px;
+    font-size: 12px;
     height: 100%;
     width: 50%;
+    margin-left: 5px;
+    border-radius: 5px;
   }
   .btnDiv {
     width: 50%;

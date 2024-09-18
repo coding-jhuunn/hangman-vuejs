@@ -19,7 +19,7 @@ export default {
   display: flex;
   align-content: center;
   justify-content: center;
-  text-indent: 50px;
+  text-indent: 25px;
 }
 .main {
   display: flex;
@@ -34,7 +34,7 @@ export default {
     padding: 0 15px 0 15px;
   }
   .top {
-    min-height: 150px;
+    min-height: 200px;
     font-size: 16px;
     padding: 12px;
   }
