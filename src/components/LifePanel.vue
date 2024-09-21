@@ -23,7 +23,7 @@ export default {
 };
 </script>
 <style scoped>
-.mainLifePanel {
+/* .mainLifePanel {
   height: 75px;
   width: 100%;
 }
@@ -37,6 +37,26 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.mainLifePanel {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.heart {
+  width: 16px;
+  height: 16px;
+}
+.healthBarPanel {
+  height: 100%;
+  width: 50%;
+}
+.resultPanel {
+  width: 50%;
+  height: 100%;
 }
 @media (max-width: 600px) {
   .mainLifePanel {
@@ -131,5 +151,5 @@ export default {
   .resultString {
     font-size: 14px;
   }
-}
+} */
 </style>

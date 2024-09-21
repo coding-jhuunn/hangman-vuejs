@@ -15,7 +15,7 @@ export default {
 };
 </script>
 <style scoped>
-.top {
+/* .top {
   display: flex;
   align-content: center;
   justify-content: center;
@@ -26,8 +26,18 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
 
+  width: 100%;
+  padding: 0 15px 0 15px;
+}
+.top {
+  min-height: 200px;
+  font-size: 16px;
+  padding: 12px;
+}
+.bot {
+  font-size: 12px;
+}
 @media (max-width: 600px) {
   .main {
     width: 100%;
@@ -109,5 +119,5 @@ export default {
   .bot {
     font-size: 18px;
   }
-}
+} */
 </style>

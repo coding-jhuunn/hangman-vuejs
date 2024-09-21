@@ -194,20 +194,19 @@ export default {
 };
 </script>
 <style>
-@media (max-width: 600px) {
-  .mainPanel {
-    display: flex;
-    flex-direction: column;
-    font-size: 12px;
-    padding: 25px;
-  }
-  .subPanel {
-    margin-top: 5px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  }
+/* .mainPanel {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  padding: 25px;
 }
+.subPanel {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 @media (max-width: 768px) {
   .mainPanel {
     display: flex;
@@ -250,5 +249,5 @@ export default {
     justify-content: center;
     align-content: center;
   }
-}
+} */
 </style>
