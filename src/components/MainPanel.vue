@@ -237,12 +237,12 @@ export default {
   }
 }
 
-@media (min-width: 1025px) and (max-width: 1200px) {
+@media (min-width: 1025px) {
   .mainPanel {
     display: flex;
     flex-direction: row;
     font-size: 20px;
-    padding: 40px;
+    padding: 0px;
   }
   .subPanel {
     margin-top: 10px;
@@ -251,9 +251,4 @@ export default {
     align-content: center;
   }
 }
-/* @media (min-width: 1201px) {
-  .header {
-    font-size: 22px;
-  }
-} */
 </style>

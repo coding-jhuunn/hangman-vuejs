@@ -70,7 +70,7 @@ export default {
     font-size: 16px;
   }
 }
-@media (min-width: 1025px) and (max-width: 1200px) {
+@media (min-width: 1025px) {
   .main {
     width: 100%;
     padding: 0 60px 0 60px;
@@ -83,16 +83,31 @@ export default {
     font-size: 18px;
   }
 }
-/*
 
 @media (min-width: 1025px) and (max-width: 1200px) {
-  .header {
+  .main {
+    width: 100%;
+    padding: 0 45px 0 45px;
+  }
+  .top {
     font-size: 20px;
+    padding: 18px;
+  }
+  .bot {
+    font-size: 16px;
   }
 }
 @media (min-width: 1201px) {
-  .header {
-    font-size: 22px;
+  .main {
+    width: 100%;
+    padding: 0 30px 0 30px;
   }
-} */
+  .top {
+    font-size: 22px;
+    padding: 18px;
+  }
+  .bot {
+    font-size: 18px;
+  }
+}
 </style>

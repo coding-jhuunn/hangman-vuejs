@@ -188,7 +188,7 @@ button:hover {
     width: 50%;
   }
 }
-@media (min-width: 1025px) and (max-width: 1200px) {
+@media (min-width: 1025px) {
   .inputPanel {
     width: 450px;
     height: 72px;
