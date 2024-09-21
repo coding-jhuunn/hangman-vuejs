@@ -19,14 +19,14 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  height: 75px;
-  margin-bottom: 25px;
+  margin-bottom: 24px;
 }
 
 .side {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 48px;
 }
 
 a {
@@ -38,27 +38,39 @@ a {
 }
 
 @media (max-width: 600px) {
-  .header {
+  .side {
     font-size: 14px;
   }
 }
 @media (max-width: 768px) {
-  .header {
+  .side {
     font-size: 16px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .header {
+    margin-bottom: 36px;
+  }
+  .side {
     font-size: 18px;
+    height: 60px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
   .header {
+    margin-bottom: 40px;
+  }
+  .side {
+    height: 64px;
     font-size: 20px;
   }
 }
 @media (min-width: 1201px) {
   .header {
+    margin-bottom: 40px;
+  }
+  .side {
+    height: 68px;
     font-size: 22px;
   }
 }
