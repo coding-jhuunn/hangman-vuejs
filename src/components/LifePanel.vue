@@ -7,8 +7,10 @@
     </div>
 
     <div class="resultPanel">
-      <div class="resultTitle">Result</div>
-      <div class="resultString">{{ resultString }}</div>
+      <div class="resultTitle">
+        <p v-if="!resultString">Waiting...</p>
+        <p v-else-if="resultString">{{ resultString }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -23,6 +25,45 @@ export default {
 };
 </script>
 <style scoped>
+.mainLifePanel {
+  background: lightgrey;
+}
+.healthBarPanel {
+  background: lightgreen;
+}
+.resultPanel {
+  background: lightgoldenrodyellow;
+}
+.resultTitle {
+  background: lightseagreen;
+}
+
+.healthBarPanel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.resultPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.resultString {
+  background: lightsteelblue;
+  display: flex;
+}
+@media (max-width: 768px) {
+  .mainLifePanel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .resultPanel {
+    display: flex;
+    justify-content: space-between;
+  }
+}
 /* .mainLifePanel {
   height: 75px;
   width: 100%;

@@ -194,19 +194,31 @@ export default {
 };
 </script>
 <style>
-/* .mainPanel {
-  display: flex;
-  flex-direction: column;
-  font-size: 12px;
-  padding: 25px;
+.mainPanel {
+  background: lightblue;
 }
 .subPanel {
-  margin-top: 5px;
+  background: lightcoral;
+}
+.mainPanel {
+  display: flex;
+  flex-direction: column;
+}
+.subPanel {
   display: flex;
   justify-content: center;
   align-content: center;
 }
 
+@media (max-width: 600px) {
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mainPanel {
+    display: flex;
+    flex-direction: row;
+  }
+}
+/*
 @media (max-width: 768px) {
   .mainPanel {
     display: flex;

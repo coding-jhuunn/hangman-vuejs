@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="mainGuessPanel">
     <div class="top">{{ tobeGuessSentence }}</div>
     <div class="bot">{{ tobeGuessAuthor }}</div>
   </div>
@@ -15,12 +15,38 @@ export default {
 };
 </script>
 <style scoped>
-/* .top {
+.mainGuessPanel {
+  background: lightgoldenrodyellow;
+}
+.top {
+  background: lightgray;
+}
+.bot {
+  background: lightgreen;
+}
+.mainGuessPanel {
   display: flex;
-  align-content: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.top {
   text-indent: 25px;
 }
+@media (max-width: 600px) {
+}
+@media (max-width: 768px) {
+  .mainGuessPanel {
+    min-height: 250px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mainGuessPanel {
+    min-height: 450px;
+    min-width: 450px;
+  }
+}
+/*}
 .main {
   display: flex;
   flex-direction: column;
