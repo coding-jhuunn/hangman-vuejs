@@ -25,7 +25,7 @@ export default {
 };
 </script>
 <style scoped>
-.mainLifePanel {
+/* .mainLifePanel {
   background: lightgrey;
 }
 .healthBarPanel {
@@ -42,12 +42,14 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 50%;
 }
 .resultPanel {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 50%;
 }
 .resultString {
   background: lightsteelblue;
@@ -56,14 +58,14 @@ export default {
 @media (max-width: 768px) {
   .mainLifePanel {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
   }
   .resultPanel {
     display: flex;
     justify-content: space-between;
   }
-}
+} */
 /* .mainLifePanel {
   height: 75px;
   width: 100%;

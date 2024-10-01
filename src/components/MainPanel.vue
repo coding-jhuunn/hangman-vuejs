@@ -1,21 +1,27 @@
 <template>
   <div class="mainPanel">
-    <GuessPanel
-      :tobeGuessSentence="tobeGuessSentence"
-      :tobeGuessAuthor="tobeGuessAuthor"
-    ></GuessPanel>
+    <div class="topPanel">
+      <GuessPanel
+        :tobeGuessSentence="tobeGuessSentence"
+        :tobeGuessAuthor="tobeGuessAuthor"
+      ></GuessPanel>
 
-    <LifePanel :healthBar="healthBar" :resultString="resultString"></LifePanel>
-  </div>
-  <div class="subPanel">
-    <InputPanel
-      @guessBtn="guessBtn"
-      @resetBtn="resetBtn"
-      v-model="inputValue"
-      :disableGuessBtn="disableGuessBtn"
-      :disableResetBtn="disableResetBtn"
-    ></InputPanel>
-    {{ inputValue }}
+      <LifePanel
+        :healthBar="healthBar"
+        :resultString="resultString"
+      ></LifePanel>
+    </div>
+
+    <div class="subPanel">
+      <InputPanel
+        @guessBtn="guessBtn"
+        @resetBtn="resetBtn"
+        v-model="inputValue"
+        :disableGuessBtn="disableGuessBtn"
+        :disableResetBtn="disableResetBtn"
+      ></InputPanel>
+      {{ inputValue }}
+    </div>
   </div>
 </template>
 <script>
@@ -194,30 +200,32 @@ export default {
 };
 </script>
 <style>
-.mainPanel {
+/* .mainPanel {
   background: lightblue;
 }
 .subPanel {
   background: lightcoral;
 }
 .mainPanel {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 }
 .subPanel {
   display: flex;
   justify-content: center;
   align-content: center;
-}
+} */
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .mainPanel {
     display: flex;
     flex-direction: row;
   }
-}
+} */
 /*
 @media (max-width: 768px) {
   .mainPanel {

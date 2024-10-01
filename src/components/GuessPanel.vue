@@ -15,7 +15,7 @@ export default {
 };
 </script>
 <style scoped>
-.mainGuessPanel {
+/* .mainGuessPanel {
   background: lightgoldenrodyellow;
 }
 .top {
@@ -45,7 +45,7 @@ export default {
     min-height: 450px;
     min-width: 450px;
   }
-}
+} */
 /*}
 .main {
   display: flex;
