@@ -26,8 +26,8 @@ export default {
 </script>
 <style scoped>
 .heart {
-  width: 100%;
-  height: 100%;
+  width: 28px;
+  height: 28px;
 }
 .center {
   display: flex;
@@ -39,7 +39,6 @@ export default {
 .mainLifePanel {
   display: flex;
   flex-direction: row;
-  width: 100%;
   justify-content: center;
 }
 .healthBarPanel {
@@ -50,10 +49,35 @@ export default {
 }
 .resultTitle {
   width: 100%;
-
   display: flex;
   justify-content: center;
 }
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .resultPanel {
+    font-size: 14px;
+  }
+  .heart {
+    width: 32px;
+    height: 32px;
+  }
+}
+@media (min-width: 768px) {
+  .mainLifePanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media (min-width: 992px) {
+  .resultPanel {
+    font-size: 16px;
+  }
+  .heart {
+    width: 34px;
+    height: 34px;
+  }
+}
+
 /* .mainLifePanel {
   background: lightgrey;
 }
