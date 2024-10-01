@@ -57,6 +57,48 @@ export default {
 };
 </script>
 <style scoped>
+.inputPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  height: 40px;
+  padding-left: 25px;
+}
+.btnDiv {
+  width: 250px;
+  display: flex;
+  justify-content: space-evenly;
+  height: 42px;
+}
+button {
+  background-color: black;
+  color: #e7e7e7;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: px;
+  border: 1px solid black;
+  padding: 10px;
+  font-size: 12px;
+  height: 100%;
+  width: 110px;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
 /* input {
   border: none;
   border-bottom: 1px solid black;
@@ -85,7 +127,7 @@ button:hover {
 
 .guessButton:hover {
   cursor: not-allowed;
-}
+}*/
 .btn-active {
   color: white;
 }
@@ -100,7 +142,7 @@ button:hover {
   pointer-events: none;
   cursor: not-allowed;
 }
-.inputPanel {
+/* .inputPanel {
   width: 250px;
   height: 60px;
   display: flex;

@@ -15,6 +15,19 @@ export default {
 };
 </script>
 <style scoped>
+.mainGuessPanel {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.top {
+  font-size: 16px;
+}
+.bot {
+  font-size: 12px;
+}
 /* .mainGuessPanel {
   background: lightgoldenrodyellow;
 }

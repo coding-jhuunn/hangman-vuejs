@@ -1,12 +1,12 @@
 <template>
   <div class="mainLifePanel">
-    <div class="healthBarPanel">
-      <div v-for="bar in healthBar" :key="bar">
+    <div class="healthBarPanel center">
+      <div v-for="bar in healthBar" :key="bar" class="box">
         <box-icon name="heart" class="heart"></box-icon>
       </div>
     </div>
 
-    <div class="resultPanel">
+    <div class="resultPanel center">
       <div class="resultTitle">
         <p v-if="!resultString">Waiting...</p>
         <p v-else-if="resultString">{{ resultString }}</p>
@@ -25,6 +25,35 @@ export default {
 };
 </script>
 <style scoped>
+.heart {
+  width: 100%;
+  height: 100%;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 75px;
+}
+.mainLifePanel {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+.healthBarPanel {
+  display: flex;
+}
+.resultPanel {
+  font-size: 12px;
+}
+.resultTitle {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
 /* .mainLifePanel {
   background: lightgrey;
 }
