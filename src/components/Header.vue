@@ -19,7 +19,6 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  margin-bottom: 24px;
 }
 
 .side {
@@ -48,30 +47,15 @@ a {
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .header {
-    margin-bottom: 36px;
-  }
   .side {
     font-size: 18px;
     height: 60px;
   }
 }
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .header {
-    margin-bottom: 40px;
-  }
+@media (min-width: 1025px) {
   .side {
     height: 64px;
     font-size: 20px;
-  }
-}
-@media (min-width: 1201px) {
-  .header {
-    margin-bottom: 40px;
-  }
-  .side {
-    height: 68px;
-    font-size: 22px;
   }
 }
 </style>

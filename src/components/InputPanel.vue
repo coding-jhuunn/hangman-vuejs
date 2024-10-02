@@ -99,6 +99,22 @@ button:hover {
   cursor: -webkit-grab;
   cursor: grab;
 }
+
+.btn-active {
+  color: white;
+}
+
+.btn-inactive {
+  background-color: black;
+  color: gray;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.btn-inactive:hover {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 /* input {
   border: none;
   border-bottom: 1px solid black;
@@ -128,20 +144,6 @@ button:hover {
 .guessButton:hover {
   cursor: not-allowed;
 }*/
-.btn-active {
-  color: white;
-}
-
-.btn-inactive {
-  background-color: black;
-  color: gray;
-  pointer-events: none;
-  cursor: not-allowed;
-}
-.btn-inactive:hover {
-  pointer-events: none;
-  cursor: not-allowed;
-}
 /* .inputPanel {
   width: 250px;
   height: 60px;

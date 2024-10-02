@@ -220,12 +220,25 @@ export default {
   height: 150px;
 }
 @media (min-width: 768px) {
+  .mainPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 590px;
+  }
   .topPanel {
-    padding: 15px 35px 15px 35px;
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
+  }
+}
+@media (min-width: 1024px) {
+  .topPanel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
   }
 }
