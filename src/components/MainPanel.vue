@@ -203,7 +203,7 @@ export default {
 .mainPanel {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-center;
   align-items: center;
   height: 590px;
 }
@@ -221,11 +221,7 @@ export default {
 }
 @media (min-width: 768px) {
   .mainPanel {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 590px;
+    margin-top: 30px;
   }
   .topPanel {
     display: flex;
@@ -242,74 +238,4 @@ export default {
     align-items: center;
   }
 }
-/* .mainPanel {
-  background: lightblue;
-}
-.subPanel {
-  background: lightcoral;
-}
-.mainPanel {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.subPanel {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-} */
-
-/* @media (max-width: 600px) {
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  .mainPanel {
-    display: flex;
-    flex-direction: row;
-  }
-} */
-/*
-@media (max-width: 768px) {
-  .mainPanel {
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    padding: 30px;
-  }
-  .subPanel {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  .mainPanel {
-    display: flex;
-    flex-direction: column;
-    font-size: 18px;
-    padding: 35px;
-  }
-  .subPanel {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  }
-}
-
-@media (min-width: 1025px) {
-  .mainPanel {
-    display: flex;
-    flex-direction: row;
-    font-size: 20px;
-    padding: 0px;
-  }
-  .subPanel {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  }
-} */
 </style>

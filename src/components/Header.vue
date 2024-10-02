@@ -46,16 +46,10 @@ a {
     font-size: 16px;
   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) {
   .side {
     font-size: 18px;
     height: 60px;
-  }
-}
-@media (min-width: 1025px) {
-  .side {
-    height: 64px;
-    font-size: 20px;
   }
 }
 </style>
