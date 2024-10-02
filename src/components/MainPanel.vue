@@ -9,6 +9,7 @@
       <LifePanel
         :healthBar="healthBar"
         :resultString="resultString"
+        :colorResultString="colorResultString"
       ></LifePanel>
     </div>
 
@@ -50,6 +51,8 @@ export default {
       resultString: "",
       disableGuessBtn: false,
       disableResetBtn: true,
+      colorResultStringArray: ["red", "green", "blue"],
+      colorResultString: "",
       api_url: "https://quotes-api-self.vercel.app/quote",
     };
   },
@@ -59,7 +62,7 @@ export default {
     },
 
     chooseGuess(sentence) {
-      const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\’”]/;
+      const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\’”1234567890]/;
 
       this.chosenSentence = sentence.quote;
       this.tobeGuessAuthor = sentence.author;
@@ -79,16 +82,19 @@ export default {
       this.alreadyInput = false;
       if (letter.length === 0) {
         this.resultString = "Please enter a letter";
+        this.colorResultString = this.colorResultStringArray[0];
         return;
       }
       if (letter.length > 1) {
         this.resultString = "Only one letter is accepted";
+        this.colorResultString = this.colorResultStringArray[0];
         return;
       }
       if (this.completed) {
         this.disableGuessBtn = true;
         this.disableResetBtn = false;
         this.resultString = "You already got it. Contratulations!!";
+        this.colorResultString = this.colorResultStringArray[2];
 
         return;
       }
@@ -97,6 +103,7 @@ export default {
         this.disableGuessBtn = true;
         this.resultString =
           "You don't have life anymore. The result was revealed";
+        this.colorResultString = this.colorResultStringArray[0];
 
         return;
       } else {
@@ -108,12 +115,13 @@ export default {
       }
       if (this.alreadyInput) {
         this.resultString = `The letter " ${letter} " is already inputted`;
+        this.colorResultString = this.colorResultStringArray[0];
 
         return;
       }
 
       this.resultString = `You input : ${letter}`;
-
+      this.colorResultString = this.colorResultStringArray[1];
       this.inputLetter.push(letter);
 
       let isFlag = true;
@@ -142,10 +150,12 @@ export default {
             this.disableResetBtn = false;
           }
           this.resultString = `The letter you input does't not match anything`;
+          this.colorResultString = this.colorResultStringArray[0];
         }
       } else {
         this.resultString =
           "You don't have life anymore. The result was revealed";
+        this.colorResultString = this.colorResultStringArray[0];
       }
 
       if (this.healthBar === 0) {
@@ -153,17 +163,17 @@ export default {
 
         this.resultString =
           "You don't have life anymore. The result was revealed";
+        this.colorResultString = this.colorResultStringArray[0];
         this.tobeGuessSentence = this.chosenSentence;
       }
-      //chosenSent, sentToComplete)
 
-      //this.chosenSentence, this.tobeGuessSentence
       if (chosenSent === sentToComplete) {
         this.inputLetter = [];
         this.completed = true;
         this.disableGuessBtn = true;
         this.disableResetBtn = false;
         this.resultString = "You already got it. Contratulations!!";
+        this.colorResultString = this.colorResultStringArray[2];
         chosenSent = "";
         sentToComplete = "";
       }
@@ -181,7 +191,7 @@ export default {
       } catch (err) {}
     },
     resetBtn() {
-      // console.log("reset");
+      this.colorResultString = "";
       this.tobeGuessSentence = "";
       this.tobeGuessAuthor = "";
       this.inputLetter = [];

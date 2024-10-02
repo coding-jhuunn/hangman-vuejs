@@ -9,7 +9,9 @@
     <div class="resultPanel center">
       <div class="resultTitle">
         <p v-if="!resultString">Waiting...</p>
-        <p v-else-if="resultString">{{ resultString }}</p>
+        <p v-else-if="resultString" :class="colorResultString">
+          {{ resultString }}
+        </p>
       </div>
     </div>
   </div>
@@ -21,10 +23,20 @@ export default {
   props: {
     healthBar: Number,
     resultString: String,
+    colorResultString: String,
   },
 };
 </script>
 <style scoped>
+.green {
+  color: green;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
+}
 .heart {
   width: 28px;
   height: 28px;
