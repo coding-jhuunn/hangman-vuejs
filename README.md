@@ -1,3 +1,3 @@
-api link:
+This repo is for my learning of Vue Js.
 
-https://github.com/well300/quotes-api
+You can view more details in my provided pdf in this repo.
