@@ -56,6 +56,7 @@ export default {
       api_url: "https://quotes-api-self.vercel.app/quote",
     };
   },
+  // commit  HEAD: adding local storage
   methods: {
     guessBtn(value) {
       this.changeLetter(value, this.chosenSentence, this.tobeGuessSentence);
