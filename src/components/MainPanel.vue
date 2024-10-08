@@ -56,6 +56,7 @@ export default {
       api_url: "https://quotes-api-self.vercel.app/quote",
     };
   },
+
   // commit  HEAD: adding local storage
   methods: {
     guessBtn(value) {
@@ -186,10 +187,12 @@ export default {
       try {
         const res = await fetch(this.api_url);
         const data = await res.json();
-
+        console.log(data);
         this.fetchData = data;
         this.chooseGuess(this.fetchData);
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     },
     resetBtn() {
       this.colorResultString = "";
