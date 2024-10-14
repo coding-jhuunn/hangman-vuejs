@@ -29,6 +29,8 @@
 import GuessPanel from "./GuessPanel.vue";
 import LifePanel from "./LifePanel.vue";
 import InputPanel from "./InputPanel.vue";
+import { onMounted, ref, useAttrs, watch } from "vue";
+
 export default {
   name: "MainPanelV2",
   components: {
@@ -36,10 +38,27 @@ export default {
     LifePanel,
     InputPanel,
   },
+
+  // setup() {
+  //   const userStatus = ref({
+  //     healthBar: 3,
+  //     tobeGuessSentence: "",
+  //     tobeGuessAuthor: "",
+  //     chosenSentence: "",
+  //     completed: false,
+  //     alreadyInput: false,
+  //     inputLetter: [],
+  //     resultString: "",
+  //     disableGuessBtn: false,
+  //     disableResetBtn: true,
+  //     colorResultString: "",
+  //   });
+  // },
+
   data() {
     return {
       api_url: "https://quotes-api-self.vercel.app/quote",
-      userStatus: {
+      userStatus: ref({
         healthBar: 3,
         tobeGuessSentence: "",
         tobeGuessAuthor: "",
@@ -51,24 +70,45 @@ export default {
         disableGuessBtn: false,
         disableResetBtn: true,
         colorResultString: "",
-      },
+      }),
       inputValue: "",
       colorResultStringArray: ["red", "green", "blue"],
       fetchData: null,
     };
   },
+
   created() {
+    // if(this.getUseStatus){
+    //   this.getUseStatus()
+    // }
+    // else{
+    //    this.fetchQuotes();
+    // }
+    // if (this.getUseStatus()) {
+    //   console.log("local item");
+    //   return;
+    // } else {
+    //   console.log("fetch user");
     this.fetchQuotes();
   },
   methods: {
+    saveUserStatus() {
+      localStorage.setItem("userStatus", JSON.stringify(this.userStatus));
+    },
+    // getUseStatus() {
+    //   let storedUser = localStorage.getItem("userStatus");
+    //   if (storedUser) {
+    //     this.userStatus = JSON.parse(storedUser);
+    //     return this.userStatus;
+    //   } else {
+    //     return false;
+    //   }
+    // },
     async fetchQuotes() {
-      this.userStatus.tobeGuessSentence = "";
-      this.userStatus.tobeGuessAuthor = "";
       try {
         const res = await fetch(this.api_url);
         const data = await res.json();
         this.fetchData = data;
-
         this.chooseGuess(this.fetchData);
         console.log(this.fetchData);
       } catch (err) {
@@ -98,17 +138,21 @@ export default {
       return this.userStatus.tobeGuessSentence;
     },
     resetBtn() {
-      this.userStatus.colorResultString = "";
-      this.userStatus.tobeGuessSentence = "";
-      this.userStatus.tobeGuessAuthor = "";
-      this.userStatus.inputLetter = [];
-      this.userStatus.healthBar = 3;
-      this.userStatus.resultString = "";
+      this.userStatus = {
+        healthBar: 3,
+        tobeGuessSentence: "",
+        tobeGuessAuthor: "",
+        chosenSentence: "",
+        completed: false,
+        alreadyInput: false,
+        inputLetter: [],
+        resultString: "",
+        disableGuessBtn: false,
+        disableResetBtn: true,
+        colorResultString: "",
+      };
+      this.saveUserStatus();
       this.fetchQuotes();
-      this.userStatus.disableResetBtn = true;
-      this.userStatus.disableGuessBtn = false;
-      this.userStatus.resultString = "";
-      this.userStatus.completed = false;
     },
     guessBtn(value) {
       this.changeLetter(
@@ -116,6 +160,7 @@ export default {
         this.userStatus.chosenSentence,
         this.userStatus.tobeGuessSentence
       );
+      this.saveUserStatus();
     },
     changeLetter(letter, chosenSent, sentToComplete) {
       this.userStatus.alreadyInput = false;
