@@ -77,33 +77,35 @@ export default {
     };
   },
 
-  created() {
-    // if(this.getUseStatus){
-    //   this.getUseStatus()
-    // }
-    // else{
-    //    this.fetchQuotes();
-    // }
-    // if (this.getUseStatus()) {
-    //   console.log("local item");
-    //   return;
-    // } else {
-    //   console.log("fetch user");
-    this.fetchQuotes();
+  // created() {
+  //   // if(this.getUseStatus){
+  //   //   this.getUseStatus()
+  //   // }
+  //   // else{
+  //   //    this.fetchQuotes();
+  //   // }
+  //   // if (this.getUseStatus()) {
+  //   //   console.log("local item");
+  //   //   return;
+  //   // } else {
+  //   //   console.log("fetch user");
+  //   this.fetchQuotes();
+  // },
+  mounted() {
+    this.getUseStatus();
   },
   methods: {
     saveUserStatus() {
       localStorage.setItem("userStatus", JSON.stringify(this.userStatus));
     },
-    // getUseStatus() {
-    //   let storedUser = localStorage.getItem("userStatus");
-    //   if (storedUser) {
-    //     this.userStatus = JSON.parse(storedUser);
-    //     return this.userStatus;
-    //   } else {
-    //     return false;
-    //   }
-    // },
+    getUseStatus() {
+      let storedUser = localStorage.getItem("userStatus");
+      if (storedUser) {
+        this.userStatus = JSON.parse(storedUser);
+      } else {
+        this.userStatus = null;
+      }
+    },
     async fetchQuotes() {
       try {
         const res = await fetch(this.api_url);
