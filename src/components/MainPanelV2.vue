@@ -17,9 +17,11 @@
       <InputPanel
         @guessBtn="guessBtn"
         @resetBtn="resetBtn"
+        @startBtn="startBtn"
         v-model="this.inputValue"
         :disableGuessBtn="userStatus.disableGuessBtn"
         :disableResetBtn="userStatus.disableResetBtn"
+        :disableStartBtn="userStatus.disableStartBtn"
       ></InputPanel>
       {{ inputValue }}
     </div>
@@ -29,7 +31,7 @@
 import GuessPanel from "./GuessPanel.vue";
 import LifePanel from "./LifePanel.vue";
 import InputPanel from "./InputPanel.vue";
-import { onMounted, ref, useAttrs, watch } from "vue";
+import { ref } from "vue";
 
 export default {
   name: "MainPanelV2",
@@ -38,22 +40,6 @@ export default {
     LifePanel,
     InputPanel,
   },
-
-  // setup() {
-  //   const userStatus = ref({
-  //     healthBar: 3,
-  //     tobeGuessSentence: "",
-  //     tobeGuessAuthor: "",
-  //     chosenSentence: "",
-  //     completed: false,
-  //     alreadyInput: false,
-  //     inputLetter: [],
-  //     resultString: "",
-  //     disableGuessBtn: false,
-  //     disableResetBtn: true,
-  //     colorResultString: "",
-  //   });
-  // },
 
   data() {
     return {
@@ -67,8 +53,10 @@ export default {
         alreadyInput: false,
         inputLetter: [],
         resultString: "",
-        disableGuessBtn: false,
+        disableGuessBtn: true,
         disableResetBtn: true,
+        disableStartBtn: false,
+        toggleInput: false,
         colorResultString: "",
       }),
       inputValue: "",
@@ -89,8 +77,16 @@ export default {
       if (storedUser) {
         this.userStatus = JSON.parse(storedUser);
       } else {
-        this.userStatus = null;
+        this.userStatus = this.userStatus;
       }
+    },
+    startBtn() {
+      console.log("start");
+      this.fetchQuotes();
+      this.userStatus.disableGuessBtn = false;
+      this.userStatus.disableStartBtn = true;
+      this.saveUserStatus();
+      this.getUseStatus();
     },
     async fetchQuotes() {
       try {
@@ -135,12 +131,13 @@ export default {
         alreadyInput: false,
         inputLetter: [],
         resultString: "",
-        disableGuessBtn: false,
+        disableGuessBtn: true,
         disableResetBtn: true,
+        disableStartBtn: false,
         colorResultString: "",
       };
+      this.inputValue = "";
       this.saveUserStatus();
-      this.fetchQuotes();
     },
     guessBtn(value) {
       this.changeLetter(

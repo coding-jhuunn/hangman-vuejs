@@ -29,6 +29,16 @@
       >
         Reset
       </button>
+      <button
+        @click="startBtn"
+        :class="{
+          'btn-active': !disableStartBtn,
+          'btn-inactive': disableStartBtn,
+        }"
+        :disabled="disableStartBtn"
+      >
+        Start
+      </button>
     </div>
   </div>
 </template>
@@ -39,6 +49,7 @@ export default {
     inputValue: String,
     disableResetBtn: Boolean,
     disableGuessBtn: Boolean,
+    disableStartBtn: Boolean,
   },
   data() {
     return {
@@ -52,6 +63,9 @@ export default {
     },
     resetBtn() {
       this.$emit("resetBtn");
+    },
+    startBtn() {
+      this.$emit("startBtn");
     },
   },
 };
