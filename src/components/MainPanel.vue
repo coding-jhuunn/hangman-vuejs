@@ -2,14 +2,14 @@
   <div class="mainPanel">
     <div class="topPanel">
       <GuessPanel
-        :tobeGuessSentence="tobeGuessSentence"
-        :tobeGuessAuthor="tobeGuessAuthor"
+        :tobeGuessSentence="userStatus.tobeGuessSentence"
+        :tobeGuessAuthor="userStatus.tobeGuessAuthor"
       ></GuessPanel>
 
       <LifePanel
-        :healthBar="healthBar"
-        :resultString="resultString"
-        :colorResultString="colorResultString"
+        :healthBar="userStatus.healthBar"
+        :resultString="userStatus.resultString"
+        :colorResultString="userStatus.colorResultString"
       ></LifePanel>
     </div>
 
@@ -17,9 +17,11 @@
       <InputPanel
         @guessBtn="guessBtn"
         @resetBtn="resetBtn"
-        v-model="inputValue"
-        :disableGuessBtn="disableGuessBtn"
-        :disableResetBtn="disableResetBtn"
+        @startBtn="startBtn"
+        v-model="this.inputValue"
+        :disableGuessBtn="userStatus.disableGuessBtn"
+        :disableResetBtn="userStatus.disableResetBtn"
+        :disableStartBtn="userStatus.disableStartBtn"
       ></InputPanel>
       {{ inputValue }}
     </div>
@@ -29,6 +31,7 @@
 import GuessPanel from "./GuessPanel.vue";
 import LifePanel from "./LifePanel.vue";
 import InputPanel from "./InputPanel.vue";
+import { ref } from "vue";
 
 export default {
   name: "MainPanel",
@@ -37,179 +40,207 @@ export default {
     LifePanel,
     InputPanel,
   },
+
   data() {
     return {
-      fetchData: null,
-      healthBar: 3,
-      inputValue: "",
-      tobeGuessSentence: "",
-      tobeGuessAuthor: "",
-      chosenSentence: "",
-      completed: false,
-      alreadyInput: false,
-      inputLetter: [],
-      resultString: "",
-      disableGuessBtn: false,
-      disableResetBtn: true,
-      colorResultStringArray: ["red", "green", "blue"],
-      colorResultString: "",
       api_url: "https://quotes-api-self.vercel.app/quote",
+      userStatus: ref({
+        healthBar: 3,
+        tobeGuessSentence: "",
+        tobeGuessAuthor: "",
+        chosenSentence: "",
+        completed: false,
+        alreadyInput: false,
+        inputLetter: [],
+        resultString: "",
+        disableGuessBtn: true,
+        disableResetBtn: true,
+        disableStartBtn: false,
+        toggleInput: false,
+        colorResultString: "",
+      }),
+      inputValue: "",
+      colorResultStringArray: ["red", "green", "blue"],
+      fetchData: null,
     };
   },
 
-  // commit  HEAD: adding local storage
+  mounted() {
+    this.getUseStatus();
+  },
   methods: {
-    guessBtn(value) {
-      this.changeLetter(value, this.chosenSentence, this.tobeGuessSentence);
+    saveUserStatus() {
+      localStorage.setItem("userStatus", JSON.stringify(this.userStatus));
     },
-
+    getUseStatus() {
+      let storedUser = localStorage.getItem("userStatus");
+      if (storedUser) {
+        this.userStatus = JSON.parse(storedUser);
+      } else {
+        this.userStatus = this.userStatus;
+      }
+    },
+    startBtn() {
+      this.fetchQuotes();
+      this.userStatus.disableGuessBtn = false;
+      this.userStatus.disableStartBtn = true;
+      this.saveUserStatus();
+    },
+    async fetchQuotes() {
+      try {
+        const res = await fetch(this.api_url);
+        const data = await res.json();
+        this.fetchData = data;
+        this.chooseGuess(this.fetchData);
+      } catch (err) {}
+    },
     chooseGuess(sentence) {
       const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\’”1234567890]/;
 
-      this.chosenSentence = sentence.quote;
-      this.tobeGuessAuthor = sentence.author;
-      for (let index = 0; index < this.chosenSentence.length; index++) {
-        if (regex.test(this.chosenSentence[index])) {
-          this.tobeGuessSentence += this.chosenSentence[index];
-        } else if (this.chosenSentence[index] === " ") {
-          this.tobeGuessSentence += " ";
+      this.userStatus.chosenSentence = sentence.quote;
+      this.userStatus.tobeGuessAuthor = sentence.author;
+      for (
+        let index = 0;
+        index < this.userStatus.chosenSentence.length;
+        index++
+      ) {
+        if (regex.test(this.userStatus.chosenSentence[index])) {
+          this.userStatus.tobeGuessSentence +=
+            this.userStatus.chosenSentence[index];
+        } else if (this.userStatus.chosenSentence[index] === " ") {
+          this.userStatus.tobeGuessSentence += " ";
         } else {
-          this.tobeGuessSentence += "_";
+          this.userStatus.tobeGuessSentence += "_";
         }
       }
-
-      return this.tobeGuessSentence;
+      this.saveUserStatus();
+    },
+    resetBtn() {
+      this.userStatus = {
+        healthBar: 3,
+        tobeGuessSentence: "",
+        tobeGuessAuthor: "",
+        chosenSentence: "",
+        completed: false,
+        alreadyInput: false,
+        inputLetter: [],
+        resultString: "",
+        disableGuessBtn: true,
+        disableResetBtn: true,
+        disableStartBtn: false,
+        colorResultString: "",
+      };
+      this.inputValue = "";
+      this.saveUserStatus();
+    },
+    guessBtn(value) {
+      this.changeLetter(
+        value,
+        this.userStatus.chosenSentence,
+        this.userStatus.tobeGuessSentence
+      );
+      this.saveUserStatus();
     },
     changeLetter(letter, chosenSent, sentToComplete) {
-      this.alreadyInput = false;
+      this.userStatus.alreadyInput = false;
       if (letter.length === 0) {
-        this.resultString = "Please enter a letter";
-        this.colorResultString = this.colorResultStringArray[0];
+        this.userStatus.resultString = "Please enter a letter";
+        this.userStatus.colorResultString = this.colorResultStringArray[0];
         return;
       }
       if (letter.length > 1) {
-        this.resultString = "Only one letter is accepted";
-        this.colorResultString = this.colorResultStringArray[0];
+        this.userStatus.resultString = "Only one letter is accepted";
+        this.userStatus.colorResultString = this.colorResultStringArray[0];
         return;
       }
       if (this.completed) {
-        this.disableGuessBtn = true;
-        this.disableResetBtn = false;
-        this.resultString = "You already got it. Contratulations!!";
-        this.colorResultString = this.colorResultStringArray[2];
+        this.userStatus.disableGuessBtn = true;
+        this.userStatus.disableResetBtn = false;
+        this.userStatus.resultString = "You already got it. Contratulations!!";
+        this.userStatus.colorResultString = this.colorResultStringArray[2];
 
         return;
       }
-      if (this.healthBar === 0) {
-        this.disableResetBtn = false;
-        this.disableGuessBtn = true;
-        this.resultString =
+      if (this.userStatus.healthBar === 0) {
+        this.userStatus.disableResetBtn = false;
+        this.userStatus.disableGuessBtn = true;
+        this.userStatus.resultString =
           "You don't have life anymore. The result was revealed";
-        this.colorResultString = this.colorResultStringArray[0];
+        this.userStatus.colorResultString = this.colorResultStringArray[0];
 
         return;
       } else {
-        for (let i = 0; i < this.inputLetter.length; i++) {
-          if (letter === this.inputLetter[i]) {
-            this.alreadyInput = true;
+        for (let i = 0; i < this.userStatus.inputLetter.length; i++) {
+          if (letter === this.userStatus.inputLetter[i]) {
+            this.userStatus.alreadyInput = true;
           }
         }
       }
-      if (this.alreadyInput) {
-        this.resultString = `The letter " ${letter} " is already inputted`;
-        this.colorResultString = this.colorResultStringArray[0];
+      if (this.userStatus.alreadyInput) {
+        this.userStatus.resultString = `The letter " ${letter} " is already inputted`;
+        this.userStatus.colorResultString = this.colorResultStringArray[0];
 
         return;
       }
 
-      this.resultString = `You input : ${letter}`;
-      this.colorResultString = this.colorResultStringArray[1];
-      this.inputLetter.push(letter);
+      this.userStatus.resultString = `You input : ${letter}`;
+      this.userStatus.colorResultString = this.colorResultStringArray[1];
+      this.userStatus.inputLetter.push(letter);
 
       let isFlag = true;
 
-      if (this.healthBar > 0) {
+      if (this.userStatus.healthBar > 0) {
         for (let index = 0; index < chosenSent.length; index++) {
           if (chosenSent[index] == letter.toUpperCase()) {
             sentToComplete = sentToComplete.split("");
             sentToComplete.splice(index, 1, letter.toUpperCase());
             sentToComplete = sentToComplete.join("");
-            this.tobeGuessSentence = sentToComplete;
+            this.userStatus.tobeGuessSentence = sentToComplete;
             isFlag = false;
           } else if (chosenSent[index] === letter) {
             sentToComplete = sentToComplete.split("");
             sentToComplete.splice(index, 1, letter);
             sentToComplete = sentToComplete.join("");
-            this.tobeGuessSentence = sentToComplete;
+            this.userStatus.tobeGuessSentence = sentToComplete;
 
             isFlag = false;
           }
         }
         if (isFlag) {
-          this.healthBar--;
-          if (this.healthBar === 0) {
-            this.disableGuessBtn = true;
-            this.disableResetBtn = false;
+          this.userStatus.healthBar--;
+          if (this.userStatus.healthBar === 0) {
+            this.userStatus.disableGuessBtn = true;
+            this.userStatus.disableResetBtn = false;
           }
-          this.resultString = `The letter you input does't not match anything`;
-          this.colorResultString = this.colorResultStringArray[0];
+          this.userStatus.resultString = `The letter you input does't not match anything`;
+          this.userStatus.colorResultString = this.colorResultStringArray[0];
         }
       } else {
-        this.resultString =
+        this.userStatus.resultString =
           "You don't have life anymore. The result was revealed";
-        this.colorResultString = this.colorResultStringArray[0];
+        this.userStatus.colorResultString = this.colorResultStringArray[0];
       }
 
-      if (this.healthBar === 0) {
-        this.disableResetBtn = false;
+      if (this.userStatus.healthBar === 0) {
+        this.userStatus.disableResetBtn = false;
 
-        this.resultString =
+        this.userStatus.resultString =
           "You don't have life anymore. The result was revealed";
-        this.colorResultString = this.colorResultStringArray[0];
-        this.tobeGuessSentence = this.chosenSentence;
+        this.userStatus.colorResultString = this.colorResultStringArray[0];
+        this.userStatus.tobeGuessSentence = this.userStatus.chosenSentence;
       }
 
       if (chosenSent === sentToComplete) {
-        this.inputLetter = [];
-        this.completed = true;
-        this.disableGuessBtn = true;
-        this.disableResetBtn = false;
-        this.resultString = "You already got it. Contratulations!!";
-        this.colorResultString = this.colorResultStringArray[2];
+        this.userStatus.inputLetter = [];
+        this.userStatus.completed = true;
+        this.userStatus.disableGuessBtn = true;
+        this.userStatus.disableResetBtn = false;
+        this.userStatus.resultString = "You already got it. Contratulations!!";
+        this.userStatus.colorResultString = this.colorResultStringArray[2];
         chosenSent = "";
         sentToComplete = "";
       }
     },
-
-    async fetchQuotes() {
-      this.tobeGuessSentence = "";
-      this.tobeGuessAuthor = "";
-      try {
-        const res = await fetch(this.api_url);
-        const data = await res.json();
-        console.log(data);
-        this.fetchData = data;
-        this.chooseGuess(this.fetchData);
-      } catch (err) {
-        console.log(err);
-      }
-    },
-    resetBtn() {
-      this.colorResultString = "";
-      this.tobeGuessSentence = "";
-      this.tobeGuessAuthor = "";
-      this.inputLetter = [];
-      this.healthBar = 3;
-      this.resultString = "";
-      this.fetchQuotes();
-      this.disableResetBtn = true;
-      this.disableGuessBtn = false;
-      this.resultString = "";
-      this.completed = false;
-    },
-  },
-  created() {
-    this.fetchQuotes();
   },
 };
 </script>

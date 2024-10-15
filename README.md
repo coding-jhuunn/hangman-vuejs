@@ -32,6 +32,7 @@ This image shows how my design will effects on user’s devices.
 >
 > > 1. Avoid guess letters to be repeated
 > > 2. Capital letter
+> > 3. What if user accidentally reload the page ( the fetch api method will automatically apply, the test will repeat )
 
 **Applying CSS design**
 

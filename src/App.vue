@@ -1,19 +1,17 @@
 <template>
   <Header></Header>
-  <MainPanelV2></MainPanelV2>
-  <!-- <MainPanel></MainPanel> -->
+  <MainPanel></MainPanel>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
-// import MainPanel from "./components/MainPanel.vue";
-import MainPanelV2 from "./components/MainPanelV2.vue";
+import MainPanel from "./components/MainPanel.vue";
+
 export default {
   name: "App",
   components: {
     Header,
-    MainPanelV2,
-    // MainPanel,
+    MainPanel,
   },
 };
 </script>
