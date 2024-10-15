@@ -77,20 +77,6 @@ export default {
     };
   },
 
-  // created() {
-  //   // if(this.getUseStatus){
-  //   //   this.getUseStatus()
-  //   // }
-  //   // else{
-  //   //    this.fetchQuotes();
-  //   // }
-  //   // if (this.getUseStatus()) {
-  //   //   console.log("local item");
-  //   //   return;
-  //   // } else {
-  //   //   console.log("fetch user");
-  //   this.fetchQuotes();
-  // },
   mounted() {
     this.getUseStatus();
   },
