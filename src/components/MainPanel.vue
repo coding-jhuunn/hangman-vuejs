@@ -10,6 +10,7 @@
         :healthBar="userStatus.healthBar"
         :resultString="userStatus.resultString"
         :colorResultString="userStatus.colorResultString"
+        :disableStartBtn="userStatus.disableStartBtn"
       ></LifePanel>
     </div>
 
@@ -84,6 +85,7 @@ export default {
       this.fetchQuotes();
       this.userStatus.disableGuessBtn = false;
       this.userStatus.disableStartBtn = true;
+      this.userStatus.resultString = "Guess the quote";
       this.saveUserStatus();
     },
     async fetchQuotes() {
@@ -183,7 +185,7 @@ export default {
         return;
       }
 
-      this.userStatus.resultString = `You input : ${letter}`;
+      this.userStatus.resultString = `"${letter}" is in the quote`;
       this.userStatus.colorResultString = this.colorResultStringArray[1];
       this.userStatus.inputLetter.push(letter);
 

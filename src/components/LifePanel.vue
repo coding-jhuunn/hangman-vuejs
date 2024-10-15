@@ -8,8 +8,8 @@
 
     <div class="resultPanel center">
       <div class="resultTitle">
-        <p v-if="!resultString">Waiting...</p>
-        <p v-else-if="resultString" :class="colorResultString">
+        <p v-if="!disableStartBtn">Please start the game</p>
+        <p v-else-if="disableStartBtn" :class="colorResultString">
           {{ resultString }}
         </p>
       </div>
@@ -24,6 +24,7 @@ export default {
     healthBar: Number,
     resultString: String,
     colorResultString: String,
+    disableStartBtn: Boolean,
   },
 };
 </script>
