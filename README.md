@@ -16,7 +16,7 @@ Simple, I just applied the logic of how a hang-man game works on this project. I
 
 I used Vue Js as my main framework for this project and meanwhile I used vanilla CSS for implementing my design.
 
-![Design View](/test/DesignViewofTheProj.PNG)
+![Design View](/media/DesignViewofTheProj.PNG)
 
 This image shows how my design will effects on user’s devices.
 
